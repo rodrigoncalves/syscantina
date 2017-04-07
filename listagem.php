@@ -54,7 +54,7 @@
 							<!-- a linha abaixo deixa no formato de dinheiro (R$)  -->
 							<td align="center"><?=money_format('%n', $linhas['conta'])?></td>
 							<td align="center">Editar</td>
-							<td align="center"><a href="comprar.php?id=<?=$linhas['id']?>">Comprar</a></td>
+							<td align="center"><a href="comprando.php?id=<?=$linhas['id']?>">Comprar</a></td>
 							<td align="center">Apagar</td>
 						</tr>
 					<?php } ?>
