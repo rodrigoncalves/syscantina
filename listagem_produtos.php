@@ -5,7 +5,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
- <head>
+	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,15 +18,16 @@
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/theme.css" rel="stylesheet">
 		<script src="js/ie-emulation-modes-warning.js"></script>
- </head>
+	</head>
+
 	<body role="document">
-<?php
-	$resultado=mysql_query("SELECT * FROM produtos ORDER BY descricao");
-	$linhas=mysql_num_rows($resultado);
-?>
+
 	<?php
-		include_once("menu_admin.php");
+		$resultado=mysql_query("SELECT * FROM produtos ORDER BY descricao");
+		$linhas=mysql_num_rows($resultado);
 	?>
+
+	<?php include_once("menu_admin.php") ?>
 
 <div class="container theme-showcase" role="main">
 	<div class="page-header">
