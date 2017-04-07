@@ -18,7 +18,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
-	
+
 	<script type="text/javascript">
 function validaCampo()
 {
@@ -64,14 +64,14 @@ function redirecionar(){
 	<body role="document">
 	<?php
 		include_once("menu_admin.php");
-	?>	
-<div class="container theme-showcase" role="main">      
+	?>
+<div class="container theme-showcase" role="main">
       <div class="page-header">
         <h1>Cadastrar Acampante</h1>
       </div>
       <div class="row">
         <div class="col-md-12">
-		
+
 		<form id="cadastro" name="cadastro" method="post" action="cadastro.php" onsubmit="return validaCampo(); return false;">
 			<div class="form-group">
 				<label for="nome">Nome do Acampante</label><span style='color:red;'>*</span>
@@ -92,23 +92,23 @@ function redirecionar(){
 				<option>Loukinhas por Jesus</option>
 				<option>GraceTube</option>
 			  </select>
-			</div>		
+			</div>
 			<div class="form-group">
 				<label for="conta">Valor a ser depositado</label><span style='color:red;'>*</span>
 				<input name="conta" type="text" class="form-control" id="conta" placeholder="Informe o valor a ser depositado R$" onkeypress="return SomenteNumero(event);" maxlength="6">
 			</div>
 			<button type="submit" class="btn btn-default">Enviar</button> <button name="limpar" type="reset" id="limpar" class="btn btn-default">Limpar Campos preenchidos!</button>
-			
+
 			<tr>
-      <td colspan="2"><p>		 
-          		  
+      <td colspan="2"><p>
+
           <span class="style1" style='color:red'> Campos com * são obrigatórios!          </span></p>
       </td>
     </tr>
 		</form>
-		
-		
-		
+
+
+
         </div>
 		</div>
     </div>
@@ -116,7 +116,7 @@ function redirecionar(){
 	<?php
 		//include_once("menu_admin.php");
 		include_once("footer.php");
-	?>	
+	?>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -125,7 +125,7 @@ function redirecionar(){
     <script src="js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
-	
-  </body>	
-	
+
+  </body>
+
 </html>
