@@ -95,7 +95,7 @@ function redirecionar(){
 			</div>
 			<div class="form-group">
 				<label for="conta">Valor a ser depositado</label><span style='color:red;'>*</span>
-				<input name="conta" type="text" class="form-control" id="conta" placeholder="Informe o valor a ser depositado R$" onkeypress="return SomenteNumero(event);" maxlength="6">
+				<input name="conta" type="text" class="form-control" id="conta" placeholder="0.00" maxlength="6">
 			</div>
 			<button type="submit" class="btn btn-default">Enviar</button> <button name="limpar" type="reset" id="limpar" class="btn btn-default">Limpar Campos preenchidos!</button>
 

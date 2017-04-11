@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 07-Abr-2017 às 05:54
+-- Generation Time: 11-Abr-2017 às 05:14
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `acampantes` (
 INSERT INTO `acampantes` (`nome`, `conta`, `equipe`, `id`) VALUES
 ('zezinho', '50.00', 'Adoratubers', 1),
 ('Rodrigo', '50.00', 'Adoratubers', 2),
-('Juninho', '20.50', 'Adoratubers', 3);
+('Juninho', '9.20', 'Adoratubers', 3);
 
 -- --------------------------------------------------------
 
@@ -51,29 +51,8 @@ INSERT INTO `acampantes` (`nome`, `conta`, `equipe`, `id`) VALUES
 CREATE TABLE IF NOT EXISTS `historico` (
 `id` int(255) NOT NULL,
   `acampante_id` int(255) NOT NULL,
-  `produto_id` int(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `produtos`
---
-
-CREATE TABLE IF NOT EXISTS `produtos` (
-`id` int(255) NOT NULL,
-  `descricao` varchar(200) NOT NULL,
-  `valor` decimal(4,2) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `produtos`
---
-
-INSERT INTO `produtos` (`id`, `descricao`, `valor`) VALUES
-(1, 'Cachorro Quente', '8.00'),
-(2, 'chocolate', '5.00'),
-(3, 'alcaÃ§uz', '4.00');
+  `valor_compra` decimal(4,2) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Indexes for dumped tables
@@ -92,12 +71,6 @@ ALTER TABLE `historico`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `produtos`
---
-ALTER TABLE `produtos`
- ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -110,12 +83,7 @@ MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `historico`
 --
 ALTER TABLE `historico`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `produtos`
---
-ALTER TABLE `produtos`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
