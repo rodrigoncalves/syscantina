@@ -20,15 +20,20 @@
 	</head>
 
 	<body role="document">
-		<?php include_once("menu_admin.php") ?>
-		<?php
+	
+	
+	<?php
 			$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
 			$acampante=mysql_fetch_array($resultado);
 
 			$resultado=mysql_query("SELECT * FROM produtos ORDER BY descricao");
 
 			setlocale(LC_MONETARY, "pt_BR", "ptb");
-		?>
+	?>
+
+	<?php 
+	include_once("menu_admin.php");
+	?>
 
 		<div class="container theme-showcase">
 
@@ -47,7 +52,7 @@
 
 				<div class="form-group">
 					<label for="conta">Saldo</label>
-					<input type="text" class="form-control" value="<?=money_format("%n", $acampante['conta'])?>" disabled>
+					<input type="text" class="form-control" value="<?='R$'.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
 				</div>
 
 				<div class="form-group">
@@ -56,7 +61,7 @@
 					<select class="form-control" name="produto_id">
 						<option>Selecione...</option>
 						<?php while ($produto = mysql_fetch_array($resultado)) { ?>
-							<option value=<?=$produto["id"]?>><?=$produto["descricao"]." - ".money_format("%n", $produto["valor"])?></option>
+							<option value=<?=$produto["id"]?>><?=$produto["descricao"]." - R$".number_format($produto['valor'], 2, ',', '.')?></option>
 						<?php } ?>
 					</select>
 				</div>

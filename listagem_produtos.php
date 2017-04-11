@@ -50,7 +50,7 @@
 						<tr>
 							<td align="center"><?=$linhas['descricao']?></td>
 							<!-- a linha abaixo deixa no formato de dinheiro (R$)  -->
-							<td align="center"><?=money_format('%n', $linhas['valor'])?></td>
+							<td align="center"><?='R$'.number_format($linhas['valor'], 2, ',', '.')?></td>
 							<td align="center">Editar</td>
 							<td align="center">Apagar</td>
 						</tr>

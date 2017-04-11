@@ -27,7 +27,7 @@
 		$linhas=mysql_num_rows($resultado);
 	?>
 
-	<?php include_once("menu_admin.php") ?>
+	<?php include_once("menu_admin.php");?>
 
 <div class="container theme-showcase" role="main">
 	<div class="page-header">
@@ -52,7 +52,8 @@
 							<td align="center"><?=$linhas['nome']?></td>
 							<td align="center"><?=$linhas['equipe']?></td>
 							<!-- a linha abaixo deixa no formato de dinheiro (R$)  -->
-							<td align="center"><?=money_format('%n', $linhas['conta'])?></td>
+							<!--<td align="center"><=money_format('%n', $linhas['conta'])?></td>-->
+							<td align="center"><?='R$'.number_format($linhas['conta'], 2, ',', '.')?></td>
 							<td align="center">Editar</td>
 							<td align="center"><a href="comprando.php?id=<?=$linhas['id']?>">Comprar</a></td>
 							<td align="center">Apagar</td>

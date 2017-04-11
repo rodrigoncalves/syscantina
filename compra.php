@@ -44,7 +44,7 @@
 			<div class="alert alert-success" role="alert">
 				<center>
 					<h4><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</h4>
-					<h5>Novo saldo de <?=$acampante["nome"]?> &eacute; <?=money_format("%n", $acampante['conta'])?></h5>
+					<h5>Novo saldo de <?=$acampante["nome"]?> &eacute; <?='R$'.number_format($novo_saldo, 2, '.', ',')?></h5>
 
 				</center>
 			</div>
