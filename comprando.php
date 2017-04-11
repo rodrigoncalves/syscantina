@@ -26,8 +26,6 @@
 			$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
 			$acampante=mysql_fetch_array($resultado);
 
-			$resultado=mysql_query("SELECT * FROM produtos ORDER BY descricao");
-
 			setlocale(LC_MONETARY, "pt_BR", "ptb");
 	?>
 

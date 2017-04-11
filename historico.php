@@ -71,7 +71,7 @@
 										$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
 										$acampante=mysql_fetch_array($resultado);
 									?>
-									<th style="text-align: center"><?=$acampante["nome"]?></th>
+									<th style="text-align: center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante["nome"]?></a></th>
 									<?php } ?>
 									<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
 									<td align="center">Editar</td>

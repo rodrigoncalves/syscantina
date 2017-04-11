@@ -46,7 +46,8 @@
 
 			<center>
 				<button class="btn btn-default" onclick="redirecionar();">Fazer uma nova compra</button>
-				<button class="btn btn-default" onclick="redirecionar2();">Voltar para P&aacute;gina Inicial</button>
+				<button class="btn btn-default" onclick="redirecionar2();">Visualizar histórico</button>
+				<button class="btn btn-default" onclick="redirecionar3();">Voltar para P&aacute;gina Inicial</button>
 			</center>
 		</div>
 
@@ -56,6 +57,10 @@
 			}
 
 			function redirecionar2() {
+				window.location="historico.php";
+			}
+
+			function redirecionar3() {
 				window.location="administrativo.php";
 			}
 		</script>
