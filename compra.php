@@ -21,22 +21,17 @@
 
 	<body role="document">
 		<?php
-			$produto_id = $_POST["produto_id"];
 			$acampante_id = $_POST["acampante_id"];
-
-			mysql_query("INSERT INTO historico (acampante_id, produto_id) VALUES ('$produto_id', 'acampante_id')");
-
-
-			$resultado=mysql_query("SELECT * FROM produtos WHERE id=$produto_id");
-			$produto=mysql_fetch_array($resultado);
+			$valor_compra = $_POST["valor"];
 
 			$resultado=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
 			$acampante=mysql_fetch_array($resultado);
 
-			$novo_saldo = $acampante["conta"] - $produto["valor"];
+			$novo_saldo = $acampante["conta"] - $valor_compra;
 
 			mysql_query("UPDATE acampantes SET conta=$novo_saldo WHERE id=$acampante_id");
 
+			mysql_query("INSERT INTO historico (acampante_id, valor_compra) VALUES ('$acampante_id', '$valor_compra')");
 			setlocale(LC_MONETARY, "pt_BR", "ptb");
 		?>
 
@@ -44,7 +39,7 @@
 			<div class="alert alert-success" role="alert">
 				<center>
 					<h4><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</h4>
-					<h5>Novo saldo de <?=$acampante["nome"]?> &eacute; <?='R$'.number_format($novo_saldo, 2, '.', ',')?></h5>
+					<h5>Novo saldo de <?=$acampante["nome"]?> &eacute; <?='R$'.number_format($novo_saldo, 2, ',', '.')?></h5>
 
 				</center>
 			</div>

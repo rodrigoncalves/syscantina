@@ -20,8 +20,8 @@
 	</head>
 
 	<body role="document">
-	
-	
+
+
 	<?php
 			$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
 			$acampante=mysql_fetch_array($resultado);
@@ -31,7 +31,7 @@
 			setlocale(LC_MONETARY, "pt_BR", "ptb");
 	?>
 
-	<?php 
+	<?php
 	include_once("menu_admin.php");
 	?>
 
@@ -51,19 +51,13 @@
 				</div>
 
 				<div class="form-group">
-					<label for="conta">Saldo</label>
-					<input type="text" class="form-control" value="<?='R$'.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
+					<label for="conta">Saldo dispon&iacute;vel</label>
+					<input type="text" class="form-control" value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
 				</div>
 
 				<div class="form-group">
-					<label for="conta">Selecione o produto</label>
-
-					<select class="form-control" name="produto_id">
-						<option>Selecione...</option>
-						<?php while ($produto = mysql_fetch_array($resultado)) { ?>
-							<option value=<?=$produto["id"]?>><?=$produto["descricao"]." - R$".number_format($produto['valor'], 2, ',', '.')?></option>
-						<?php } ?>
-					</select>
+					<label for="conta">Valor da compra</label>
+					<input name="valor" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6">
 				</div>
 
 				<button type="submit" class="btn btn-default">Enviar</button>
@@ -75,13 +69,4 @@
 
 		</div>
 	</body>
-
-	<script>
-		function validaCampo() {
-			if (document.form.produto_id.value=="Selecione...") {
-				alert("Selecione um produto!");
-				return false;
-			}
-		}
-	</script>
 </html

@@ -41,7 +41,7 @@
 						<th style="text-align: center">Nome</th>
 						<th style="text-align: center">Equipe</th>
 						<th style="text-align: center">Saldo</th>
-						<th style="text-align: center" colspan="3">A&ccedil;&otilde;es</th>
+						<th style="text-align: center" colspan="4">A&ccedil;&otilde;es</th>
 					</tr>
 				</thead>
 
@@ -54,8 +54,9 @@
 							<!-- a linha abaixo deixa no formato de dinheiro (R$)  -->
 							<!--<td align="center"><=money_format('%n', $linhas['conta'])?></td>-->
 							<td align="center"><?='R$'.number_format($linhas['conta'], 2, ',', '.')?></td>
-							<td align="center">Editar</td>
 							<td align="center"><a href="comprando.php?id=<?=$linhas['id']?>">Comprar</a></td>
+							<td align="center"><a href="historico.php?id=<?=$linhas['id']?>">Hist&oacute;rico</a></td>
+							<td align="center">Editar</td>
 							<td align="center">Apagar</td>
 						</tr>
 					<?php } ?>
