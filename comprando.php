@@ -12,7 +12,7 @@
 		<meta name="author" content="Cesar">
 		<link rel="icon" href="imagens/favicon.ico">
 
-		<title>Listagem de Acampantes</title>
+		<title>Lista de Acampantes</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/theme.css" rel="stylesheet">
@@ -37,7 +37,7 @@
 
 		<div class="container theme-showcase">
 
-			<h1><?=$acampante["nome"]?></h1>
+			<h2>Compra</h2>
 
 			<form id="form" name="form" method="post" action="compra.php" onsubmit="return validaCampo();">
 				<div class="form-group">
