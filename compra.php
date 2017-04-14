@@ -13,8 +13,8 @@
 	mysql_query("INSERT INTO historico (acampante_id, valor_compra) VALUES ('$acampante_id', '$valor_compra')");
 
 	if (mysql_affected_rows() < 0) {
-		header("comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&error");
+		header("location:comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&error");
 	} else {
-		header("historico.php?success");
+		header("location:historico.php?success");
 	}
 ?>

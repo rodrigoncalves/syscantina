@@ -12,7 +12,7 @@
 	mysql_query("INSERT INTO `acampantes` ( `nome` ,`conta` , `equipe` , `id` ) VALUES ('$nome', '$conta','$equipe','')");
 
 	if (mysql_affected_rows() < 0) {
-		header("cadastrando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&conta=<?=$conta?>&error");
+		header("location:cadastrando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&conta=<?=$conta?>&error");
 	} else {
 		header("location:listagem.php?success");
 	}

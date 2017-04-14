@@ -17,57 +17,16 @@
 	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="css/theme.css" rel="stylesheet">
 	<script src="js/ie-emulation-modes-warning.js"></script>
-
-	<script type="text/javascript">
-		function validaCampo() {
-			if (document.cadastro.nome.value == "") {
-				alert("O Campo 'Nome do Acampante' é obrigatório!");
-				return false;
-			}
-
-			if (document.cadastro.equipe.value == 'Selecione...') {
-				alert("O Campo Equipe é obrigatório!");
-				return false;
-			}
-
-			if (document.cadastro.conta.value == "") {
-				alert("O Campo 'Valor a ser depositado' é obrigatório!");
-				return false;
-			}
-
-			return true;
-		}
-
-		function SomenteNumero(e) {
-		 	var tecla = window.event ? event.keyCode : e.which;
-
-			if ((tecla > 47 && tecla < 58)) {
-				return true;
-			}
-
-			if (tecla == 8 || tecla == 0) {
-				return true;
-			}
-
-			return false;
-		}
-
-		function redirecionar() {
-			window.location="listagem.php";
-		}
-
-	</script>
-	<!-- Fim do JavaScript que validará os campos obrigatórios! -->
+	<script src="js/validacao_acampante.js"></script>
 
 </head>
 <body role="document">
-	<?php if (!isset($_GET["id"])) { ?>
-		<script>
-			window.location.replace("listagem.php");
-		</script>
-	<?php } ?>
 
 	<?php
+		if (!isset($_GET["id"])) {
+			header("location:listagem.php");
+		}
+
 		include_once("menu_admin.php");
 
 		$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
@@ -76,6 +35,8 @@
 		$nome=$acampante["nome"];
 		$equipe=$acampante["equipe"];
 		$conta=$acampante["conta"];
+
+		setlocale(LC_MONETARY, "pt_BR", "ptb");
 	?>
 
 	<div class="container theme-showcase" role="main">
@@ -112,8 +73,8 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="conta">Valor a ser depositado</label><span style='color:red;'>*</span>
-						<input name="conta" type="text" class="form-control" id="conta" placeholder="0.00" maxlength="6" value="<?=$conta?>">
+						<label for="conta">Saldo da conta</label><span style='color:red;'>*</span>
+						<input name="conta" type="text" class="form-control" id="conta" placeholder="0,00" onkeypress="return SomenteNumero(event);" onkeyup="return FormatCurrency(this)" maxlength="6" value=<?=number_format($conta, 2, ',', '.')?>>
 					</div>
 
 					<input type="hidden" name="acampante_id" value="<?=$_GET['id']?>">
