@@ -1,7 +1,3 @@
-<?php
-	session_start();
-	include_once("conexao.php");
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -20,14 +16,15 @@
 	</head>
 
 	<body role="document">
-	<?php
-		include_once("menu_admin.php");
+		<?php
+			include_once("conexao.php");
+			include_once("menu_admin.php");
 
-		$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
-		$acampante=mysql_fetch_array($sql);
+			$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
+			$acampante=mysql_fetch_array($sql);
 
-		setlocale(LC_MONETARY, "pt_BR", "ptb");
-	?>
+			setlocale(LC_MONETARY, "pt_BR", "ptb");
+		?>
 
 		<div class="container theme-showcase">
 
@@ -61,7 +58,25 @@
 
 				</div>
 			</form>
-
 		</div>
+
+		<br><br><br><br><br><br><br><br>
+		<?php include_once("footer.php"); ?>
+
+		<script>
+			function SomenteNumero(e) {
+			var tecla = window.event ? event.keyCode : e.which;
+
+			if ((tecla > 47 && tecla < 58)) {
+				return true;
+			}
+
+			if (tecla == 8 || tecla == 0) {
+				return true;
+			}
+
+			return false;
+		}
+		</script>
 	</body>
 </html

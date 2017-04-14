@@ -1,6 +1,3 @@
-<?php
-	session_start();
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,51 +14,11 @@
 	<link href="css/theme.css" rel="stylesheet">
 	<script src="js/ie-emulation-modes-warning.js"></script>
 
-	<script type="text/javascript">
-		function validaCampo() {
-			if (document.cadastro.nome.value == "") {
-				alert("O Campo 'Nome do Acampante' é obrigatório!");
-				return false;
-			}
-
-			if (document.cadastro.equipe.value == 'Selecione...') {
-				alert("O Campo Equipe é obrigatório!");
-				return false;
-			}
-
-			if (document.cadastro.conta.value == "") {
-				alert("O Campo 'Valor a ser depositado' é obrigatório!");
-				return false;
-			}
-
-			return true;
-		}
-
-		function SomenteNumero(e) {
-		 	var tecla = window.event ? event.keyCode : e.which;
-
-			if ((tecla > 47 && tecla < 58)) {
-				return true;
-			}
-
-			if (tecla == 8 || tecla == 0) {
-				return true;
-			}
-
-			return false;
-		}
-
-		function redirecionar() {
-			window.location="listagem.php";
-		}
-
-	</script>
-	<!-- Fim do JavaScript que validará os campos obrigatórios! -->
-
 </head>
 <body role="document">
-	<?php include_once("menu_admin.php"); ?>
 	<?php
+		include_once("menu_admin.php");
+
 		$nome = isset($_GET["nome"]) ? $_GET["nome"] : "";
 		$equipe = isset($_GET["equipe"]) ? $_GET["equipe"] : "";
 		$conta = isset($_GET["conta"]) ? $_GET["conta"] : "";
@@ -102,7 +59,7 @@
 					</div>
 					<div class="form-group">
 						<label for="conta">Valor a ser depositado</label><span style='color:red;'>*</span>
-						<input name="conta" type="text" class="form-control" id="conta" placeholder="0.00" maxlength="6" value="<?=$conta?>">
+						<input name="conta" type="text" class="form-control" id="conta" placeholder="0,00" onkeypress="return SomenteNumero(event);" onkeyup="return FormatCurrency(this)" maxlength="6" value="<?=$conta?>">
 					</div>
 
 					<button type="submit" class="btn btn-primary">Salvar</button>
@@ -114,14 +71,72 @@
 
 	<br><br><br><br><br><br><br><br>
 	<?php include_once("footer.php"); ?>
-	<!-- Bootstrap core JavaScript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/docs.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+	<script>
+		function validaCampo() {
+			if (document.cadastro.nome.value == "") {
+				alert("O Campo 'Nome do Acampante' é obrigatório!");
+				return false;
+			}
+
+			if (document.cadastro.equipe.value == 'Selecione...') {
+				alert("O Campo Equipe é obrigatório!");
+				return false;
+			}
+
+			if (document.cadastro.conta.value == "") {
+				alert("O Campo 'Valor a ser depositado' é obrigatório!");
+				return false;
+			}
+
+			return true;
+		}
+
+		function SomenteNumero(e) {
+			var tecla = window.event ? event.keyCode : e.which;
+
+			if ((tecla >= 48 && tecla <= 57)) {
+				return true;
+			}
+
+			if (tecla == 8 || tecla == 0 || tecla == 188 || tecla == 46 || tecla == 44) {
+				return true;
+			}
+
+			return false;
+		}
+
+		function FormatCurrency(ctrl) {
+				//Check if arrow keys are pressed - we want to allow navigation around textbox using arrow keys
+				var key = event.keyCode;
+				if (key >= 36 && key <= 40 || key == 188 || key == 190 || key == 17) {
+						return;
+				}
+
+				var val = ctrl.value;
+				val = val.replace(/\./, "")
+				ctrl.value = "";
+				val += '';
+				x = val.split(',');
+				x1 = x[0];
+				x2 = x.length > 1 ? ',' + x[1] : '';
+
+				var rgx = /(\d+)(\d{3})/;
+
+				while (rgx.test(x1)) {
+						x1 = x1.replace(rgx, '$1' + '.' + '$2');
+				}
+
+				ctrl.value = x1 + x2;
+		}
+
+		function redirecionar() {
+			window.location="listagem.php";
+		}
+
+	</script>
+	<!-- Fim do JavaScript que validará os campos obrigatórios! -->
+
 
 </body>
 
