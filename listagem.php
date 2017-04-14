@@ -32,6 +32,11 @@
 			<div class="page-header">
 				<h1>Lista de Acampantes</h1>
 			</div>
+
+			<div class="container">
+				<a href="cadastrando.php">Cadastrar novo</a>
+			</div>
+
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-hover table-striped table-bordered responsive-table">
@@ -49,9 +54,7 @@
 								<tr>
 									<td align="center"><?=$linhas['nome']?></td>
 									<td align="center"><?=$linhas['equipe']?></td>
-									<!-- a linha abaixo deixa no formato de dinheiro (R$)  -->
-									<!--<td align="center"><=money_format('%n', $linhas['conta'])?></td>-->
-									<td align="center"><?='R$'.number_format($linhas['conta'], 2, ',', '.')?></td>
+									<td align="center"><?='R$ '.number_format($linhas['conta'], 2, ',', '.')?></td>
 									<td align="center"><a href="comprando.php?id=<?=$linhas['id']?>">Comprar</a></td>
 									<td align="center"><a href="historico.php?id=<?=$linhas['id']?>">Hist&oacute;rico</a></td>
 									<td align="center">Editar</td>

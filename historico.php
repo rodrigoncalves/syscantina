@@ -43,6 +43,7 @@
 				<h1>Histórico de compras</h1>
 				<?php if ($acampante_id > 0) { ?>
 					<h3><b>Acampante: </b><?=$acampante["nome"]?> - <?=$acampante["equipe"]?></h3>
+					<a href="historico.php">Histórico de todos os acampantes</a>
 				<?php } else { ?>
 					<h3><b>Todos acampantes</b></h3>
 				<?php } ?>
@@ -62,22 +63,22 @@
 						</thead>
 
 						<tbody>
-							<?php $num=1; ?>
-							<?php while($compra = mysql_fetch_array($compras)) { ?>
-								<tr>
-									<td align="center"><?=$num++?></td>
-									<?php if ($acampante_id == 0) { ?>
-									<?php
-										$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
-										$acampante=mysql_fetch_array($resultado);
-									?>
-									<th style="text-align: center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante["nome"]?></a></th>
-									<?php } ?>
-									<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
-									<td align="center">Editar</td>
-									<td align="center">Apagar</td>
-								</tr>
-							<?php } ?>
+						<?php $num=1; ?>
+						<?php while ($compra = mysql_fetch_array($compras)) { ?>
+							<tr>
+								<td align="center"><?=$num++?></td>
+								<?php if ($acampante_id == 0) { ?>
+								<?php
+									$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
+									$acampante=mysql_fetch_array($resultado);
+								?>
+								<td style="text-align: center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante["nome"]?></a></td>
+								<?php } ?>
+								<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
+								<td align="center">Editar</td>
+								<td align="center">Apagar</td>
+							</tr>
+						<?php } ?>
 						</tbody>
 					</table>
 				</div>

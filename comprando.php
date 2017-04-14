@@ -20,17 +20,13 @@
 	</head>
 
 	<body role="document">
-
-
 	<?php
-			$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
-			$acampante=mysql_fetch_array($resultado);
+		include_once("menu_admin.php");
 
-			setlocale(LC_MONETARY, "pt_BR", "ptb");
-	?>
+		$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
+		$acampante=mysql_fetch_array($resultado);
 
-	<?php
-	include_once("menu_admin.php");
+		setlocale(LC_MONETARY, "pt_BR", "ptb");
 	?>
 
 		<div class="container theme-showcase">
