@@ -10,7 +10,7 @@
 
 	mysql_query("UPDATE acampantes SET conta=$novo_saldo WHERE id=".$compra['acampante_id']);
 
-	if (mysql_affected_rows() > 0) {
+	if (mysql_affected_rows() > 0 || $compra["valor_compra"] == 0) {
 		mysql_query("DELETE FROM historico WHERE id=".$_GET['id']);
 	}
 ?>
