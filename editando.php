@@ -90,7 +90,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<form id="cadastro" name="cadastro" method="post" action="editar.php" onsubmit="return validaCampo(); return false;">
+				<form id="cadastro" name="cadastro" method="post" action="edita.php" onsubmit="return validaCampo(); return false;">
 					<div class="form-group">
 						<label for="nome">Nome do Acampante</label><span style='color:red;'>*</span>
 						<input name="nome" type="text" class="form-control" id="nome" placeholder="Insira o nome do Acampante" maxlength="60" value="<?=$nome?>">
@@ -115,6 +115,8 @@
 						<label for="conta">Valor a ser depositado</label><span style='color:red;'>*</span>
 						<input name="conta" type="text" class="form-control" id="conta" placeholder="0.00" maxlength="6" value="<?=$conta?>">
 					</div>
+
+					<input type="hidden" name="acampante_id" value="<?=$_GET['id']?>">
 
 					<button type="submit" class="btn btn-primary">Salvar</button>
 					<a href="listagem.php" class="btn btn-default">Cancelar</a>

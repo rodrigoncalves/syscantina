@@ -19,9 +19,9 @@
 ?>
 
 <script>
-<?php if (mysql_affected_rows() > 0) { ?>
-	window.location.replace("historico.php?success");
-<?php } else { ?>
+<?php if (mysql_affected_rows() < 0) { ?>
 	window.location.replace("editando_historico.php?acampante_id=<?=$acampante_id?>&compra_id=<?=$compra_id?>&error");
+<?php } else { ?>
+	window.location.replace("historico.php?success");
 <?php } ?>
 </script>

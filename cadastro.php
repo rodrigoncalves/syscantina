@@ -11,9 +11,9 @@
 ?>
 
 <script>
-<?php if (mysql_affected_rows() > 0) { ?>
-	window.location.replace("listagem.php?success");
-<?php } else { ?>
+<?php if (mysql_affected_rows() < 0) { ?>
 	window.location.replace("cadastrando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&conta=<?=$conta?>&error");
+<?php } else { ?>
+	window.location.replace("listagem.php?success");
 <?php } ?>
 </script>

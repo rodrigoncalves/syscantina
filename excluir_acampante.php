@@ -4,10 +4,10 @@
 ?>
 
 <script>
-<?php if (mysql_affected_rows() > 0) { ?>
-	alert('Acampante exluido com sucesso');
-<?php } else { ?>
+<?php if (mysql_affected_rows() < 0) { ?>
 	alert('Erro ao excluir acampante do banco de dados');
+<?php } else { ?>
+	alert('Acampante exluido com sucesso');
 <?php } ?>
 	window.location.replace("listagem.php");
 </script>

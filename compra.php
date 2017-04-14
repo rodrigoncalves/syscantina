@@ -15,9 +15,9 @@
 ?>
 
 <script>
-<?php if (mysql_affected_rows() > 0) { ?>
-	window.location.replace("historico.php?success");
-<?php } else { ?>
+<?php if (mysql_affected_rows() < 0) { ?>
 	window.location.replace("comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&error");
+<?php } else { ?>
+	window.location.replace("historico.php?success");
 <?php } ?>
 </script>
