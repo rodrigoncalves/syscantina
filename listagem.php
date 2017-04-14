@@ -65,6 +65,7 @@
 									<td align="center"><a href="historico.php?id=<?=$linhas['id']?>">Hist&oacute;rico</a></td>
 									<td align="center">Editar</td>
 									<td align="center">Apagar</td>
+
 								</tr>
 							<?php } ?>
 						</tbody>
