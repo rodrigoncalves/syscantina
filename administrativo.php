@@ -10,7 +10,7 @@
     <link rel="icon" href="imagens/favicon.ico">
 
     <title>Administrativo</title>
-	
+
 	<link href="css/footer.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -23,13 +23,15 @@
 	<?php
 		include_once("menu_admin.php");
 	?>
-	  
+
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
        <center><h2>Sistema Cantininha</h2></center>
        <center><p>Seja Bem Vindo!</p></center>
+
+       <center><p>Utilize o menu acima para começar</p></center>
       </div>
 
      <!-- <div class="page-header">
@@ -37,13 +39,13 @@
       </div>
       <div class="alert alert-success" role="alert">
         <center><strong>Sucesso!</strong> Operação realizada com sucesso!</center>
-      </div>     
+      </div>
       <div class="alert alert-danger" role="alert">
         <center><strong>Ops!</strong> Algo ocorreu de errado para esta operação! Corrija as falhas e tente novamente!</center>
       </div>-->
 <center><img src="imagens/mif.png"  alt="MIF"></center>
     </div> <!-- /container -->
-	
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -58,7 +60,7 @@
 	<?php
 		//include_once("menu_admin.php");
 		include_once("footer.php");
-	?>	
-	
+	?>
+
   </body>
 </html>
