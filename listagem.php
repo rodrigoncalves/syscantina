@@ -48,9 +48,10 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<table class="table table-hover table-striped table-bordered responsive-table">
+					<table class="table table-hover table-bordered responsive-table">
 						<thead>
-							<tr>
+							<tr class="active">
+								<th style="text-align: center">#</th>
 								<th style="text-align: center">Nome</th>
 								<th style="text-align: center">Equipe</th>
 								<th style="text-align: center">Saldo</th>
@@ -59,14 +60,16 @@
 						</thead>
 
 						<tbody>
+							<?php $num=1; ?>
 							<?php while($acampante = mysql_fetch_array($resultado)) { ?>
 								<tr>
+									<td align="center"><?=$num++?></td>
 									<td align="center"><?=$acampante['nome']?></td>
 									<td align="center"><?=$acampante['equipe']?></td>
 									<td align="center"><?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
 									<td align="center"><a href="comprando.php?id=<?=$acampante['id']?>">Comprar</a></td>
 									<td align="center"><a href="historico.php?id=<?=$acampante['id']?>">Hist&oacute;rico</a></td>
-									<td align="center">Editar</td>
+									<td align="center"><a href="editando.php?id=<?=$acampante['id']?>">Editar</a></td>
 									<td align="center"><a href="excluir_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a></td>
 								</tr>
 							<?php } ?>
