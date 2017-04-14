@@ -13,10 +13,11 @@
 		<meta name="author" content="Cesar">
 		<link rel="icon" href="imagens/favicon.ico">
 
-		<title>Listagem de Acampantes</title>
+		<title>Acampantes</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/theme.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
 		<script src="js/ie-emulation-modes-warning.js"></script>
 	</head>
 
@@ -28,13 +29,18 @@
 			include_once("menu_admin.php");
 		?>
 
+
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">
-				<h1>Lista de Acampantes</h1>
-			</div>
-
-			<div class="container">
-				<a href="cadastrando.php">Cadastrar novo</a>
+				<div class="row">
+					<div class="col-sm-6">
+						<h1>Lista de acampantes</h1>
+					</div>
+					<div class="col-sm-6 text-right h2">
+						<a class="btn btn-primary" href="cadastrando.php"><i class="fa fa-plus"></i> Cadastrar novo</a>
+						<a class="btn btn-default" href="listagem.php"><i class="fa fa-refresh"></i> Atualizar</a>
+					</div>
+				</div>
 			</div>
 
 			<div class="row">
