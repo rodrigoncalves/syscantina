@@ -23,15 +23,18 @@
 	<?php
 		include_once("menu_admin.php");
 
-		$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
-		$acampante=mysql_fetch_array($resultado);
+		$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["acampante_id"]);
+		$acampante=mysql_fetch_array($sql);
+
+		$sql=mysql_query("SELECT * FROM historico WHERE id=".$_GET["compra_id"]);
+		$compra=mysql_fetch_array($sql);
 
 		setlocale(LC_MONETARY, "pt_BR", "ptb");
 	?>
 
 		<div class="container theme-showcase">
 
-			<h2>Compra</h2>
+			<h2>Editar compra</h2>
 
 			<form id="form" name="form" method="post" action="compra.php" onsubmit="return validaCampo();">
 				<div class="form-group">
@@ -51,7 +54,7 @@
 
 				<div class="form-group">
 					<label for="conta">Valor da compra</label>
-					<input name="valor" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6">
+					<input name="valor" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" value="<?=$compra['valor_compra']?>">
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>

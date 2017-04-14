@@ -27,8 +27,8 @@
 			$acampante_id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
 			if ($acampante_id > 0) {
-				$resultado=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
-				$acampante=mysql_fetch_array($resultado);
+				$sql=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
+				$acampante=mysql_fetch_array($sql);
 				$compras=mysql_query("SELECT * FROM historico WHERE acampante_id=$acampante_id");
 			} else {
 				$compras=mysql_query("SELECT * FROM historico");
@@ -70,14 +70,14 @@
 								<td align="center"><?=$num++?></td>
 								<?php if ($acampante_id == 0) { ?>
 								<?php
-									$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
-									$acampante=mysql_fetch_array($resultado);
+									$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
+									$acampante=mysql_fetch_array($sql);
 								?>
 								<td style="text-align: center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante['nome']?></a></td>
 								<td align="center"><?=$acampante["equipe"]?></td>
 								<?php } ?>
 								<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
-								<td align="center">Editar</td>
+								<td align="center"><a href=<?="editando_historico.php?acampante_id=".$compra['acampante_id']."&compra_id=".$compra['id']?>>Editar</a></td>
 								<td align="center"><a href="excluir_historico.php?id=<?=$compra['id']?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a></td>
 							</tr>
 						<?php } ?>
