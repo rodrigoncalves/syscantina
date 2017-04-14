@@ -1,7 +1,3 @@
-<?php
-	session_start();
-	include_once("conexao.php");
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -22,6 +18,7 @@
 
 	<body role="document">
 		<?php
+			include_once("conexao.php");
 			$resultado=mysql_query("SELECT * FROM acampantes ORDER BY equipe,nome");
 			setlocale(LC_MONETARY, "pt_BR", "ptb");
 			include_once("menu_admin.php");

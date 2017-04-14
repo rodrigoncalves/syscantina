@@ -1,7 +1,3 @@
-<?php
-	session_start();
-	include_once("conexao.php");
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -21,6 +17,8 @@
 
 	<body role="document">
 		<?php
+			include_once("conexao.php");
+
 			// Report all errors except E_NOTICE
 			error_reporting(E_ALL & ~E_NOTICE);
 

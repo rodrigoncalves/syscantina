@@ -1,7 +1,3 @@
-<?php
-	session_start();
-	include_once("conexao.php");
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,6 +23,7 @@
 			header("location:listagem.php");
 		}
 
+		include_once("conexao.php");
 		include_once("menu_admin.php");
 
 		$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
