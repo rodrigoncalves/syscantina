@@ -56,6 +56,7 @@
 								<th style="text-align: center">#</th>
 								<?php if ($acampante_id == 0) { ?>
 								<th style="text-align: center">Nome</th>
+								<th style="text-align: center">Equipe</th>
 								<?php } ?>
 								<th style="text-align: center">Valor</th>
 								<th style="text-align: center" colspan="2">A&ccedil;&otilde;es</th>
@@ -72,11 +73,12 @@
 									$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
 									$acampante=mysql_fetch_array($resultado);
 								?>
-								<td style="text-align: center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante["nome"]?></a></td>
+								<td style="text-align: center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante['nome']?></a></td>
+								<td align="center"><?=$acampante["equipe"]?></td>
 								<?php } ?>
 								<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
 								<td align="center">Editar</td>
-								<td align="center">Apagar</td>
+								<td align="center"><a href="excluir_historico.php?id=<?=$compra['id']?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a></td>
 							</tr>
 						<?php } ?>
 						</tbody>
