@@ -56,9 +56,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<table class="table table-hover table-striped table-bordered responsive-table">
+					<table class="table table-hover table-bordered responsive-table">
 						<thead>
-							<tr>
+							<tr class="active">
 								<th style="text-align: center">#</th>
 								<?php if ($acampante_id == 0) { ?>
 								<th style="text-align: center">Nome</th>

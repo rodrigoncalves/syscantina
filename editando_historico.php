@@ -58,6 +58,7 @@
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
+				<a href="historico.php" class="btn btn-default">Cancelar</a>
 
 				<input type="hidden" name="acampante_id" value="<?=$_GET['acampante_id']?>">
 				<input type="hidden" name="compra_id" value="<?=$_GET['compra_id']?>">
