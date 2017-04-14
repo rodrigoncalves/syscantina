@@ -24,7 +24,6 @@
 	<body role="document">
 		<?php
 			$resultado=mysql_query("SELECT * FROM acampantes ORDER BY equipe,nome");
-			$linhas=mysql_num_rows($resultado);
 			setlocale(LC_MONETARY, "pt_BR", "ptb");
 			include_once("menu_admin.php");
 		?>
@@ -56,16 +55,15 @@
 						</thead>
 
 						<tbody>
-							<?php while($linhas = mysql_fetch_array($resultado)) { ?>
+							<?php while($acampante = mysql_fetch_array($resultado)) { ?>
 								<tr>
-									<td align="center"><?=$linhas['nome']?></td>
-									<td align="center"><?=$linhas['equipe']?></td>
-									<td align="center"><?='R$ '.number_format($linhas['conta'], 2, ',', '.')?></td>
-									<td align="center"><a href="comprando.php?id=<?=$linhas['id']?>">Comprar</a></td>
-									<td align="center"><a href="historico.php?id=<?=$linhas['id']?>">Hist&oacute;rico</a></td>
+									<td align="center"><?=$acampante['nome']?></td>
+									<td align="center"><?=$acampante['equipe']?></td>
+									<td align="center"><?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
+									<td align="center"><a href="comprando.php?id=<?=$acampante['id']?>">Comprar</a></td>
+									<td align="center"><a href="historico.php?id=<?=$acampante['id']?>">Hist&oacute;rico</a></td>
 									<td align="center">Editar</td>
-									<td align="center">Apagar</td>
-
+									<td align="center"><a href="excluir_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a></td>
 								</tr>
 							<?php } ?>
 						</tbody>
