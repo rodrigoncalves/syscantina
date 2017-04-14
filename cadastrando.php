@@ -13,7 +13,7 @@
 	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="css/theme.css" rel="stylesheet">
 	<script src="js/ie-emulation-modes-warning.js"></script>
-	<script src="js/validacao_acampante.js"></script>
+	<script src="js/validacao_campos.js"></script>
 
 </head>
 <body role="document">

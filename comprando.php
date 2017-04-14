@@ -13,6 +13,7 @@
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/theme.css" rel="stylesheet">
 		<script src="js/ie-emulation-modes-warning.js"></script>
+		<script src="js/validacao_campos.js"></script>
 	</head>
 
 	<body role="document">
@@ -48,7 +49,7 @@
 
 				<div class="form-group">
 					<label for="conta">Valor da compra</label>
-					<input name="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6">
+					<input name="valor_compra" type="text" class="form-control" placeholder="0,00" onkeypress="return SomenteNumero(event);" onkeyup="return FormatCurrency(this)" maxlength="6">
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
@@ -63,20 +64,5 @@
 		<br><br><br><br><br><br><br><br>
 		<?php include_once("footer.php"); ?>
 
-		<script>
-			function SomenteNumero(e) {
-			var tecla = window.event ? event.keyCode : e.which;
-
-			if ((tecla > 47 && tecla < 58)) {
-				return true;
-			}
-
-			if (tecla == 8 || tecla == 0) {
-				return true;
-			}
-
-			return false;
-		}
-		</script>
 	</body>
 </html

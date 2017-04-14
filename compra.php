@@ -4,6 +4,8 @@
 	$valor_compra = $_POST["valor_compra"];
 	$acampante_id = $_POST["acampante_id"];
 
+	$valor_compra = str_replace(',', '', str_replace(',','.',$valor_compra));
+
 	$sql=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
 	$acampante=mysql_fetch_array($sql);
 

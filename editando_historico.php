@@ -13,6 +13,7 @@
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/theme.css" rel="stylesheet">
 		<script src="js/ie-emulation-modes-warning.js"></script>
+		<script src="js/validacao_campos.js"></script>
 	</head>
 
 	<body role="document">
@@ -30,6 +31,12 @@
 		?>
 
 		<div class="container theme-showcase">
+
+			<?php if (isset($_GET["error"])) { ?>
+				<div class="alert alert-danger" role="alert">
+					<center><strong>Erro</strong> ao editar compra no banco de dados!</center>
+				</div>
+			<?php } ?>
 
 			<h2>Editar compra</h2>
 
@@ -51,7 +58,7 @@
 
 				<div class="form-group">
 					<label for="conta">Valor da compra</label>
-					<input name="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" value="<?=$compra['valor_compra']?>">
+					<input name="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" onkeyup="return FormatCurrency(this)" value=<?=number_format($compra['valor_compra'], 2, ',', '.')?>>
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
