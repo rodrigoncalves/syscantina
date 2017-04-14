@@ -12,9 +12,8 @@
 
 <script>
 <?php if (mysql_affected_rows() > 0) { ?>
-	alert('Acampante exluido com sucesso');
+	window.location.replace("listagem.php?success");
 <?php } else { ?>
-	alert('Erro ao excluir acampante do banco de dados');
+	window.location.replace("editando.php?id=<?=$_GET['id']");
 <?php } ?>
-	window.location.replace("listagem.php");
 </script>

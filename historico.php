@@ -39,6 +39,12 @@
 		?>
 
 		<div class="container theme-showcase" role="main">
+			<?php if (isset($_GET["success"])) { ?>
+				<div class="alert alert-success" role="alert">
+					<center><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</center>
+				</div>
+			<?php } ?>
+
 			<div class="page-header">
 				<h1>Histórico de compras</h1>
 				<?php if ($acampante_id > 0) { ?>

@@ -36,7 +36,7 @@
 
 			<h2>Editar compra</h2>
 
-			<form id="form" name="form" method="post" action="compra.php" onsubmit="return validaCampo();">
+			<form id="form" name="form" method="post" action="edita_historico.php" onsubmit="return validaCampo();">
 				<div class="form-group">
 					<label>Nome do acampante</label>
 					<input name="nome" type="text" class="form-control" value="<?=$acampante['nome']?>" disabled>
@@ -54,12 +54,13 @@
 
 				<div class="form-group">
 					<label for="conta">Valor da compra</label>
-					<input name="valor" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" value="<?=$compra['valor_compra']?>">
+					<input name="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" value="<?=$compra['valor_compra']?>">
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
 
-				<input type="hidden" name="acampante_id" value="<?=$acampante['id']?>">
+				<input type="hidden" name="acampante_id" value="<?=$_GET['acampante_id']?>">
+				<input type="hidden" name="compra_id" value="<?=$_GET['compra_id']?>">
 
 				</div>
 			</form>

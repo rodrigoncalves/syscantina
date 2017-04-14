@@ -23,8 +23,8 @@
 	<?php
 		include_once("menu_admin.php");
 
-		$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
-		$acampante=mysql_fetch_array($resultado);
+		$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
+		$acampante=mysql_fetch_array($sql);
 
 		setlocale(LC_MONETARY, "pt_BR", "ptb");
 	?>
@@ -46,15 +46,16 @@
 
 				<div class="form-group">
 					<label for="conta">Saldo dispon&iacute;vel</label>
-					<input type="text" class="form-control" value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
+					<input type="text" name="saldo" class="form-control" value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
 				</div>
 
 				<div class="form-group">
 					<label for="conta">Valor da compra</label>
-					<input name="valor" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6">
+					<input name="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6">
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
+				<a href="listagem.php" class="btn btn-default">Cancelar</a>
 
 				<input type="hidden" name="acampante_id" value="<?=$acampante['id']?>">
 
