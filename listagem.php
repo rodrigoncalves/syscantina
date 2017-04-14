@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	//include_once("seguranca.php");
 	include_once("conexao.php");
 ?>
 <!DOCTYPE html>
@@ -28,8 +27,13 @@
 			include_once("menu_admin.php");
 		?>
 
-
 		<div class="container theme-showcase" role="main">
+			<?php if (isset($_GET["success"])) { ?>
+				<div class="alert alert-success" role="alert">
+					<center><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</center>
+				</div>
+			<?php } ?>
+
 			<div class="page-header">
 				<div class="row">
 					<div class="col-sm-6">

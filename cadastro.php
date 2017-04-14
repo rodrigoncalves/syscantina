@@ -36,27 +36,21 @@
 		include_once("conexao.php");
 
 		// RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
-		$nome	= $_POST ["nome"];
-		$cont	= $_POST ["conta"];
-		$equipe	= $_POST ["equipe"];
-		//Gravando no banco de dados !
+		$nome	= $_POST["nome"];
+		$conta	= $_POST["conta"];
+		$equipe	= $_POST["equipe"];
 
-		mysql_query("INSERT INTO `acampantes` ( `nome` ,`conta` , `equipe` , `id` ) VALUES ('$nome', '$cont','$equipe','')");
+		// Gravando no banco de dados
+		mysql_query("INSERT INTO `acampantes` ( `nome` ,`conta` , `equipe` , `id` ) VALUES ('$nome', '$conta','$equipe','')");
 	?>
 
+	<script>
 	<?php if (mysql_affected_rows() > 0) { ?>
-		<div class="container">
-			<div class="alert alert-success" role="alert">
-				<center><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</center>
-			</div>
-		</div>
+		window.location.replace("listagem.php?success");
 	<?php } else { ?>
+		window.location.replace("cadastrando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&conta=<?=$conta?>&error");
 	<?php } ?>
-
-	<center>
-		<button class="btn btn-primary" onclick="redirecionar();">Fazer um novo cadastro</button>
-		<button class="btn btn-default" onclick="redirecionar3();">Lista de acampantes</button>
-	</center>
+	</script>
 
 </body>
 </html>
