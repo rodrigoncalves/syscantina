@@ -63,7 +63,8 @@
 									<td align="center"><?=$num++?></td>
 									<td align="center"><?=$acampante['nome']?></td>
 									<td align="center"><?=$acampante['equipe']?></td>
-									<td align="center"><?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
+									<td align="center"<?=$acampante['conta']<=0 ? " style='color:red;'" : ""?>>
+										<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
 									<td align="center"><a href="comprando.php?id=<?=$acampante['id']?>">Comprar</a></td>
 									<td align="center"><a href="historico.php?id=<?=$acampante['id']?>">Hist&oacute;rico</a></td>
 									<td align="center"><a href="editando.php?id=<?=$acampante['id']?>">Editar</a></td>
