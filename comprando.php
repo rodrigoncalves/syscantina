@@ -29,6 +29,12 @@
 
 		<div class="container theme-showcase">
 
+			<?php if ($acampante['conta']<=0) { ?>
+				<div class="alert alert-danger" role="alert">
+					<center><strong>Atenção: </strong><?=$acampante['nome']?> não tem saldo suficiente. Antes de realizar a compra, tenha certeza que deseja continuar.</center>
+				</div>
+			<?php } ?>
+
 			<h2>Compra</h2>
 
 			<form id="form" name="form" method="post" action="compra.php" onsubmit="return validaCampo();">
@@ -44,7 +50,8 @@
 
 				<div class="form-group">
 					<label for="conta">Saldo dispon&iacute;vel</label>
-					<input type="text" name="saldo" class="form-control" value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
+					<input type="text" name="saldo" class="form-control" <?=$acampante['conta']<=0?" style='color:red';":""?>
+						value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
 				</div>
 
 				<div class="form-group">
@@ -52,12 +59,15 @@
 					<input name="valor_compra" type="text" class="form-control" placeholder="0,00" onkeypress="return SomenteNumero(event);" onkeyup="return FormatCurrency(this)" maxlength="6">
 				</div>
 
-				<button type="submit" class="btn btn-primary">Salvar</button>
-				<a href="listagem.php" class="btn btn-default">Cancelar</a>
+				<div class="form-group">
+					<label for="conta">Descrição</label>
+					<textarea class="form-control" form="form" placeholder="Insira os produtos" rows="4"></textarea>
+				</div>
 
 				<input type="hidden" name="acampante_id" value="<?=$acampante['id']?>">
 
-				</div>
+				<button type="submit" class="btn btn-primary">Salvar</button>
+				<a href="listagem.php" class="btn btn-default">Cancelar</a>
 			</form>
 		</div>
 
