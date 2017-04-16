@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `acampantes` (
   `nome` varchar(60) NOT NULL,
-  `conta` decimal(4,2) DEFAULT NULL,
+  `conta` decimal(5,2) DEFAULT NULL,
   `equipe` varchar(30) CHARACTER SET utf8 NOT NULL,
 `id` int(255) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
@@ -51,7 +51,7 @@ INSERT INTO `acampantes` (`nome`, `conta`, `equipe`, `id`) VALUES
 CREATE TABLE IF NOT EXISTS `historico` (
 `id` int(255) NOT NULL,
   `acampante_id` int(255) NOT NULL,
-  `valor_compra` decimal(4,2) NOT NULL
+  `valor_compra` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
