@@ -17,6 +17,6 @@
 	if (mysql_affected_rows() < 0) {
 		header("location:comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&error");
 	} else {
-		header("location:historico.php?success");
+		header("location:historico.php?id=$acampante_id&success");
 	}
 ?>
