@@ -63,6 +63,7 @@
 								<th style="text-align: center">Equipe</th>
 								<?php } ?>
 								<th style="text-align: center">Valor</th>
+								<th style="text-align: center">Descrição</th>
 								<th style="text-align: center" colspan="2">A&ccedil;&otilde;es</th>
 							</tr>
 						</thead>
@@ -81,6 +82,7 @@
 								<td align="center"><?=$acampante["equipe"]?></td>
 								<?php } ?>
 								<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
+								<td align="center"><?=$compra["descricao"]?></td>
 								<td align="center"><a href=<?="editando_historico.php?acampante_id=".$compra['acampante_id']."&compra_id=".$compra['id']?>>Editar</a></td>
 								<td align="center"><a href="excluir_historico.php?id=<?=$compra['id']?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a></td>
 							</tr>
@@ -90,5 +92,6 @@
 				</div>
 			</div>
 		</div>
+		<?php include_once("footer.php");?>
 	</body>
 </html>

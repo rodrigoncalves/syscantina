@@ -3,6 +3,7 @@
 
 	$valor_compra = $_POST["valor_compra"];
 	$acampante_id = $_POST["acampante_id"];
+	$descricao = $_POST["descricao"];
 
 	$valor_compra = str_replace(',', '', str_replace(',','.',$valor_compra));
 
@@ -12,11 +13,11 @@
 	$novo_saldo = $acampante["conta"] - $valor_compra;
 
 	mysql_query("UPDATE acampantes SET conta=$novo_saldo WHERE id=$acampante_id");
-	mysql_query("INSERT INTO historico (acampante_id, valor_compra) VALUES ('$acampante_id', '$valor_compra')");
+	mysql_query("INSERT INTO historico (acampante_id, valor_compra, descricao) VALUES ('$acampante_id', '$valor_compra', '$descricao')");
 
 	if (mysql_affected_rows() < 0) {
-		header("location:comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&error");
+		header("location:comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&descricao=<?=$descricao?>&error");
 	} else {
-		header("location:historico.php?id=$acampante_id&success");
+		header("location:historico.php?success");
 	}
 ?>

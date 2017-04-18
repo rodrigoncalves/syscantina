@@ -53,12 +53,18 @@
 
 				<div class="form-group">
 					<label for="conta">Saldo dispon&iacute;vel</label>
-					<input type="text" class="form-control" value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
+					<input type="text" class="form-control" <?=$acampante['conta']<=0?" style='color:red';":""?>
+						value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
 				</div>
 
 				<div class="form-group">
 					<label for="conta">Valor da compra</label>
 					<input name="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" onkeyup="return FormatCurrency(this)" value=<?=number_format($compra['valor_compra'], 2, ',', '.')?>>
+				</div>
+
+				<div class="form-group">
+					<label for="conta">Descrição</label>
+					<textarea name="descricao" class="form-control" rows="3" maxlength="255"><?=$compra['descricao']?></textarea>
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>

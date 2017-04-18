@@ -61,7 +61,7 @@
 
 				<div class="form-group">
 					<label for="conta">Descrição</label>
-					<textarea class="form-control" form="form" placeholder="Insira os produtos" rows="4"></textarea>
+					<textarea name="descricao" class="form-control" form="form" placeholder="Insira os produtos" rows="3"></textarea>
 				</div>
 
 				<input type="hidden" name="acampante_id" value="<?=$acampante['id']?>">
