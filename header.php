@@ -11,10 +11,10 @@
 		<title>Cantina</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
-		<link href="css/theme.css" rel="stylesheet">
 		<link href="css/font-awesome.min.css" rel="stylesheet">
-		<script src="js/ie-emulation-modes-warning.js"></script>
-		<script src="js/validacao_campos.js"></script>
+		<link href="css/theme.css" rel="stylesheet">
+		<link href="css/footer.css" rel="stylesheet">
+
 	</head>
 
 	<body role="document">

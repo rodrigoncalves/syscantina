@@ -1,36 +1,8 @@
-<html>
-<head>
-<style type="text/css">
-	body {
-  		margin:0;
-  		padding:0;
-  		height:60%;
-	}
-	.tudo {
- 		min-height:100%;
-  		position:relative;
-	}
-	.topo {
-		background:red;
-		padding:40px;
-	}
-	.conteudo {
-   		padding:10px;
-   		padding-bottom:60px;
-	}
-	.rodape {
-   		position:relative;
-   		bottom:0px;
-   		width:100%;
-   		height:55px;
-   		background-image:linear-gradient(to bottom,#3c3c3c 0,#222 100%);
-	
-	}
-	
+.rodape {
+        position:relative;
+        bottom:0px;
+        width:100%;
+        height:55px;
+        background-image:linear-gradient(to bottom,#3c3c3c 0,#222 100%);
 
-</style>
-</head>
-<body>
-
-</body>
-</html>
+}
