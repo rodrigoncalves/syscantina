@@ -16,6 +16,7 @@
 					|| strpos($_SERVER["REQUEST_URI"], "editando.php")
 					|| strpos($_SERVER["REQUEST_URI"], "cadastrando.php")
 					|| strpos($_SERVER["REQUEST_URI"], "comprando.php") !== false?'class="active"':""?>><a href="listagem.php">Acampantes</a></li>
+				<li <?=strpos($_SERVER["REQUEST_URI"], "equipes.php")!==false?'class="active"':""?>><a href="equipes.php">Equipes</a></li>
 				<li <?=strpos($_SERVER["REQUEST_URI"], "historico.php")!==false?'class="active"':""?>><a href="historico.php">Histórico</a></li>
 			</ul>
 		</div>
