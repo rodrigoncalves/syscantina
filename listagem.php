@@ -1,7 +1,7 @@
 <?php
 	include_once("conexao.php");
 	include_once("header.php");
-	$resultado=mysql_query("SELECT * FROM acampantes ORDER BY nome");
+	$resultado=mysqli_query($con, "SELECT * FROM acampantes ORDER BY nome");
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>
 
@@ -45,7 +45,7 @@
 
 				<tbody>
 					<?php $num=1; ?>
-					<?php while($acampante = mysql_fetch_array($resultado)) { ?>
+					<?php while($acampante = mysqli_fetch_array($resultado)) { ?>
 						<tr>
 							<td align="center"><?=$num++?></td>
 							<td align="center"><?=$acampante['nome']?></td>

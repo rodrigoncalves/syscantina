@@ -9,9 +9,9 @@
 	$conta = str_replace(',', '', str_replace(',','.',$conta));
 
 	// Gravando no banco de dados
-	mysql_query("INSERT INTO `acampantes` ( `nome` ,`conta` , `equipe` , `id` ) VALUES ('$nome', '$conta','$equipe','')");
+	mysqli_query($con, "INSERT INTO `acampantes` ( `nome` ,`conta` , `equipe` , `id` ) VALUES ('$nome', '$conta','$equipe','')");
 
-	if (mysql_affected_rows() < 0) {
+	if (mysqli_affected_rows($con) < 0) {
 		header("location:cadastrando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&conta=<?=$conta?>&error");
 	} else {
 		header("location:listagem.php?success");

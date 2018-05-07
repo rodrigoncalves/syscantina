@@ -6,8 +6,8 @@
 	include_once("conexao.php");
 	include_once("header.php");
 
-	$resultado=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
-	$acampante=mysql_fetch_array($resultado);
+	$resultado=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$_GET["id"]);
+	$acampante=mysqli_fetch_array($resultado);
 
 	$nome=$acampante["nome"];
 	$equipe=$acampante["equipe"];

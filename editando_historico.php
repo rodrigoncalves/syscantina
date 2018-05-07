@@ -2,11 +2,11 @@
 	include_once("conexao.php");
 	include_once("header.php");
 
-	$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["acampante_id"]);
-	$acampante=mysql_fetch_array($sql);
+	$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$_GET["acampante_id"]);
+	$acampante=mysqli_fetch_array($sql);
 
-	$sql=mysql_query("SELECT * FROM historico WHERE id=".$_GET["compra_id"]);
-	$compra=mysql_fetch_array($sql);
+	$sql=mysqli_query($con, "SELECT * FROM historico WHERE id=".$_GET["compra_id"]);
+	$compra=mysqli_fetch_array($sql);
 
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>

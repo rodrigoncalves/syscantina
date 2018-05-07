@@ -2,8 +2,8 @@
 	include_once("conexao.php");
 	include_once("header.php");
 
-	$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$_GET["id"]);
-	$acampante=mysql_fetch_array($sql);
+	$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$_GET["id"]);
+	$acampante=mysqli_fetch_array($sql);
 
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>

@@ -8,23 +8,23 @@
 
 	$valor_compra = str_replace(',', '', str_replace(',','.',$valor_compra));
 
-	$sql=mysql_query("SELECT * FROM historico WHERE id=$compra_id");
-	$compra=mysql_fetch_array($sql);
+	$sql=mysqli_query($con, "SELECT * FROM historico WHERE id=$compra_id");
+	$compra=mysqli_fetch_array($sql);
 
-	$sql=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
-	$acampante=mysql_fetch_array($sql);
+	$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=$acampante_id");
+	$acampante=mysqli_fetch_array($sql);
 
 	$valor_antigo = $compra["valor_compra"];
 
 	$novo_saldo = $acampante["conta"] + ($valor_antigo - $valor_compra);
 
-	mysql_query("UPDATE historico SET acampante_id=$acampante_id, valor_compra=$valor_compra, descricao='$descricao' WHERE id=$compra_id");
+	mysqli_query($con, "UPDATE historico SET acampante_id=$acampante_id, valor_compra=$valor_compra, descricao='$descricao' WHERE id=$compra_id");
 
-	if (mysql_affected_rows() >= 0) {
-		mysql_query("UPDATE acampantes SET conta=$novo_saldo WHERE id=".$compra['acampante_id']);
+	if (mysqli_affected_rows($con) >= 0) {
+		mysqli_query($con, "UPDATE acampantes SET conta=$novo_saldo WHERE id=".$compra['acampante_id']);
 	}
 
-	if (mysql_affected_rows() < 0) {
+	if (mysqli_affected_rows($con) < 0) {
 		header("location:editando_historico.php?acampante_id=$acampante_id&compra_id=$compra_id&error");
 	} else {
 		header("location:historico.php?success");

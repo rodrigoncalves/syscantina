@@ -14,19 +14,19 @@
 	// Verifica se foi passado id do acampante no GET
 	$acampante_id = isset($_GET["id"]) ? $_GET["id"] : 0;
 	if ($acampante_id > 0) {
-		$sql=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
-		$acampante=mysql_fetch_array($sql);
+		$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=$acampante_id");
+		$acampante=mysqli_fetch_array($sql);
 	}
 
-	$compras=mysql_query("SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp DESC LIMIT $inicio, $quantidade");
+	$compras=mysqli_query($con, "SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp DESC LIMIT $inicio, $quantidade");
 
 	$sem_paginamento=isset($_GET["all"]);
 	if ($sem_paginamento) {
-		$compras=mysql_query("SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp");
+		$compras=mysqli_query($con, "SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp");
 	}
 
-	$sql=mysql_query("SELECT id FROM historico");
-	$total_compras=mysql_num_rows($sql);
+	$sql=mysqli_query($con, "SELECT id FROM historico");
+	$total_compras=mysqli_num_rows($sql);
 
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 	setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -85,13 +85,13 @@
 
 				<tbody>
 				<?php $num=1; ?>
-				<?php while ($compra = mysql_fetch_array($compras)) { ?>
+				<?php while ($compra = mysqli_fetch_array($compras)) { ?>
 					<tr>
 						<td align="center"><?=$num++?></td>
 						<td align="center"><?=strftime('%d/%m (%a) - %H:%M', strtotime($compra["timestamp"]));?></td>
 						<?php if ($acampante_id == 0) {
-							$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
-							$acampante=mysql_fetch_array($sql);
+							$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
+							$acampante=mysqli_fetch_array($sql);
 						?>
 						<td align="center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante['nome']?></a></td>
 						<td align="center"><?=$acampante["equipe"]?></td>
