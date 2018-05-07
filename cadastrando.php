@@ -1,9 +1,12 @@
 <?php
 	include_once("header.php");
+	include_once("conexao.php");
 
 	$nome = isset($_GET["nome"]) ? $_GET["nome"] : "";
-	$equipe = isset($_GET["equipe"]) ? $_GET["equipe"] : "";
+	$equipe_id = isset($_GET["equipe_id"]) ? $_GET["equipe_id"] : "";
 	$conta = isset($_GET["conta"]) ? $_GET["conta"] : "";
+
+	$equipes = mysqli_query($con, "SELECT * FROM equipes");
 ?>
 
 <div class="container theme-showcase" role="main">
@@ -27,17 +30,9 @@
 					<label for="equipe">Equipe</label><span style='color:red;'>*</span>
 					<select class="form-control" name="equipe" id="equipe">
 						<option>Selecione...</option>
-						<option<?=$equipe=="Adoratubers"?" selected":""?>>Adoratubers</option>
-						<option<?=$equipe=="Kidscípulos"?" selected":""?>>Kidscípulos</option>
-						<option<?=$equipe=="Discitubers"?" selected":""?>>Discitubers</option>
-						<option<?=$equipe=="Youdiscípulos"?" selected":""?>>Youdiscípulos</option>
-						<option<?=$equipe=="Discipuloucos por Cristo"?" selected":""?>>Discipuloucos por Cristo</option>
-						<option<?=$equipe=="Likes para Jesus"?" selected":""?>>Likes para Jesus</option>
-						<option<?=$equipe=="Discipulindas"?" selected":""?>>Discipulindas</option>
-						<option<?=$equipe=="VEVO em Cristo"?" selected":""?>>VEVO em Cristo</option>
-						<option<?=$equipe=="Loukinhas por Jesus"?" selected":""?>>Loukinhas por Jesus</option>
-						<option<?=$equipe=="GraceTube"?" selected":""?>>GraceTube</option>
-						<option<?=$equipe=="COLABORADOR"?" selected":""?>>COLABORADOR</option>
+						<?php while($eq = mysqli_fetch_array($equipes)) { ?>
+							<option <?=$eq['id']==$equipe_id?"selected":""?>><?=$eq['nome']?></option>
+						<?php } ?>
 					</select>
 				</div>
 				<div class="form-group">

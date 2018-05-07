@@ -10,8 +10,10 @@
 	$acampante=mysqli_fetch_array($resultado);
 
 	$nome=$acampante["nome"];
-	$equipe=$acampante["equipe"];
+	$equipe_id=$acampante["equipe_id"];
 	$conta=$acampante["conta"];
+
+	$equipes = mysqli_query($con, "SELECT * FROM equipes");
 
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>
@@ -37,6 +39,9 @@
 					<label for="equipe">Equipe</label><span style='color:red;'>*</span>
 					<select class="form-control" name="equipe" id="equipe">
 						<option>Selecione...</option>
+						<?php while($eq = mysqli_fetch_array($equipes)) { ?>
+							<option <?=$eq['id']==$equipe_id?"selected":""?>><?=$eq['nome']?></option>
+						<?php } ?>
 						<option<?=$equipe=="Adoratubers"?" selected":""?>>Adoratubers</option>
 						<option<?=$equipe=="Kidscípulos"?" selected":""?>>Kidscípulos</option>
 						<option<?=$equipe=="Discitubers"?" selected":""?>>Discitubers</option>

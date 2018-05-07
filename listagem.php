@@ -1,7 +1,7 @@
 <?php
 	include_once("conexao.php");
 	include_once("header.php");
-	$resultado=mysqli_query($con, "SELECT * FROM acampantes ORDER BY nome");
+	$acampantes=mysqli_query($con, "SELECT * FROM acampantes ORDER BY nome");
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>
 
@@ -45,11 +45,13 @@
 
 				<tbody>
 					<?php $num=1; ?>
-					<?php while($acampante = mysqli_fetch_array($resultado)) { ?>
+					<?php while($acampante = mysqli_fetch_array($acampantes)) { ?>
+						<?php $resultado = mysqli_query($con, "select nome from equipes where id=".$acampante['equipe_id']) ?>
+						<?php $equipe_nome = mysqli_fetch_array($resultado)['nome'] ?>
 						<tr>
 							<td align="center"><?=$num++?></td>
 							<td align="center"><?=$acampante['nome']?></td>
-							<td align="center"><?=$acampante['equipe']?></td>
+							<td align="center"><?=$equipe_nome?></td>
 							<td align="center"<?=$acampante['conta']<=0 ? " style='color:red;'" : ""?>>
 								<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
 							<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" href="comprando.php?id=<?=$acampante['id']?>"><i class="fa fa-shopping-cart"></i></a></td>
