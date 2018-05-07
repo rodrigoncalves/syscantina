@@ -37,22 +37,11 @@
 				</div>
 				<div class="form-group">
 					<label for="equipe">Equipe</label><span style='color:red;'>*</span>
-					<select class="form-control" name="equipe" id="equipe">
+					<select class="form-control" name="equipe_id" id="equipe">
 						<option>Selecione...</option>
-						<?php while($eq = mysqli_fetch_array($equipes)) { ?>
-							<option <?=$eq['id']==$equipe_id?"selected":""?>><?=$eq['nome']?></option>
+						<?php while($equipe = mysqli_fetch_array($equipes)) { ?>
+							<option value=<?=$equipe['id']?> <?=$equipe['id']==$equipe_id?"selected":""?>><?=$equipe['nome']?></option>
 						<?php } ?>
-						<option<?=$equipe=="Adoratubers"?" selected":""?>>Adoratubers</option>
-						<option<?=$equipe=="Kidscípulos"?" selected":""?>>Kidscípulos</option>
-						<option<?=$equipe=="Discitubers"?" selected":""?>>Discitubers</option>
-						<option<?=$equipe=="Youdiscípulos"?" selected":""?>>Youdiscípulos</option>
-						<option<?=$equipe=="Discipuloucos por Cristo"?" selected":""?>>Discipuloucos por Cristo</option>
-						<option<?=$equipe=="Likes para Jesus"?" selected":""?>>Likes para Jesus</option>
-						<option<?=$equipe=="Discipulindas"?" selected":""?>>Discipulindas</option>
-						<option<?=$equipe=="VEVO em Cristo"?" selected":""?>>VEVO em Cristo</option>
-						<option<?=$equipe=="Loukinhas por Jesus"?" selected":""?>>Loukinhas por Jesus</option>
-						<option<?=$equipe=="GraceTube"?" selected":""?>>GraceTube</option>
-						<option<?=$equipe=="COLABORADOR"?" selected":""?>>COLABORADOR</option>
 					</select>
 				</div>
 				<div class="form-group">

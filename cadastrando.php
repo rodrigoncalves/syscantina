@@ -30,8 +30,8 @@
 					<label for="equipe">Equipe</label><span style='color:red;'>*</span>
 					<select class="form-control" name="equipe_id" id="equipe">
 						<option>Selecione...</option>
-						<?php while($eq = mysqli_fetch_array($equipes)) { ?>
-							<option value=<?=$eq['id']?> <?=$eq['id']==$equipe_id?"selected":""?>><?=$eq['nome']?></option>
+						<?php while($equipe = mysqli_fetch_array($equipes)) { ?>
+							<option value=<?=$equipe['id']?> <?=$equipe['id']==$equipe_id?"selected":""?>><?=$equipe['nome']?></option>
 						<?php } ?>
 					</select>
 				</div>
