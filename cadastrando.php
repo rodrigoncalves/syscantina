@@ -28,10 +28,10 @@
 				</div>
 				<div class="form-group">
 					<label for="equipe">Equipe</label><span style='color:red;'>*</span>
-					<select class="form-control" name="equipe" id="equipe">
+					<select class="form-control" name="equipe_id" id="equipe">
 						<option>Selecione...</option>
 						<?php while($eq = mysqli_fetch_array($equipes)) { ?>
-							<option <?=$eq['id']==$equipe_id?"selected":""?>><?=$eq['nome']?></option>
+							<option value=<?=$eq['id']?> <?=$eq['id']==$equipe_id?"selected":""?>><?=$eq['nome']?></option>
 						<?php } ?>
 					</select>
 				</div>
