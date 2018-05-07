@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 -- Database: `acampantes`
 --
 
+CREATE DATABASE IF NOT EXISTS acampantes;
+USE acampantes;
+
 -- --------------------------------------------------------
 
 --
@@ -32,24 +35,6 @@ CREATE TABLE IF NOT EXISTS `acampantes` (
   `equipe` varchar(30) CHARACTER SET utf8 NOT NULL,
 `id` int(255) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
-
---
--- Extraindo dados da tabela `acampantes`
---
-
-INSERT INTO `acampantes` (`nome`, `conta`, `equipe`, `id`) VALUES
-('Rodrigo', '10.00', 'VEVO em Cristo', 2),
-('JoÃ£o', '30.00', 'YoudiscÃ­pulos', 10),
-('Zezinho', '20.50', 'KidscÃ­pulos', 15),
-('Pedro', '30.00', 'KidscÃ­pulos', 16),
-('Lucas', '10.10', 'GraceTube', 17),
-('Joaquim', '3.50', 'Discipuloucos por Cristo', 18),
-('Felipe', '33.33', 'GraceTube', 19),
-('Maria', '15.00', 'Discitubers', 20),
-('Joana', '-12.00', 'Adoratubers', 22),
-('Juninho', '3.40', 'Discitubers', 25),
-('Acampante', '15.00', 'YoudiscÃ­pulos', 26),
-('Novo acampante', '100.00', 'KidscÃ­pulos', 29);
 
 -- --------------------------------------------------------
 
@@ -64,21 +49,6 @@ CREATE TABLE IF NOT EXISTS `historico` (
   `descricao` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
-
---
--- Extraindo dados da tabela `historico`
---
-
-INSERT INTO `historico` (`id`, `acampante_id`, `valor_compra`, `descricao`, `timestamp`) VALUES
-(21, 2, '30.00', '', '2017-04-16 16:01:24'),
-(22, 2, '1.20', '', '2017-04-16 16:01:24'),
-(23, 2, '3.20', '', '2017-04-16 16:01:24'),
-(24, 2, '5.60', '', '2017-04-16 16:01:24'),
-(34, 18, '1.29', '', '2017-04-16 16:01:24'),
-(35, 22, '5.00', '', '2017-04-16 16:01:24'),
-(36, 22, '2.00', '', '2017-04-16 16:01:24'),
-(37, 22, '10.00', '', '2017-04-16 16:01:24'),
-(38, 18, '5.50', '', '2017-04-16 16:02:06');
 
 --
 -- Indexes for dumped tables

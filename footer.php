@@ -1,8 +1,6 @@
 <link href="css/footer.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-<link href="theme.css" rel="stylesheet">
 
 <div class="rodape" align="center">
 	<br>
@@ -18,3 +16,5 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 
+</body>
+</html>

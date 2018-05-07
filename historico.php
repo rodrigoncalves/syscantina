@@ -1,97 +1,145 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Página Administrativa">
-		<meta name="author" content="Cesar">
-		<link rel="icon" href="imagens/favicon.ico">
+<?php
+	include_once("conexao.php");
+	include_once("header.php");
 
-		<title>Listagem de Acampantes</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
-		<link href="css/theme.css" rel="stylesheet">
-		<script src="js/ie-emulation-modes-warning.js"></script>
-	</head>
+	// Report all errors except E_NOTICE
+	error_reporting(E_ALL & ~E_NOTICE);
 
-	<body role="document">
-		<?php
-			include_once("conexao.php");
+	// Paginação
+	$quantidade=30;
+	$pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
+	if ($pagina <= 0) $pagina = 1;
+	$inicio = ($quantidade * $pagina) - $quantidade;
 
-			// Report all errors except E_NOTICE
-			error_reporting(E_ALL & ~E_NOTICE);
+	// Verifica se foi passado id do acampante no GET
+	$acampante_id = isset($_GET["id"]) ? $_GET["id"] : 0;
+	if ($acampante_id > 0) {
+		$sql=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
+		$acampante=mysql_fetch_array($sql);
+	}
 
-			$acampante_id = isset($_GET["id"]) ? $_GET["id"] : 0;
+	$compras=mysql_query("SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp DESC LIMIT $inicio, $quantidade");
 
-			if ($acampante_id > 0) {
-				$sql=mysql_query("SELECT * FROM acampantes WHERE id=$acampante_id");
-				$acampante=mysql_fetch_array($sql);
-				$compras=mysql_query("SELECT * FROM historico WHERE acampante_id=$acampante_id");
-			} else {
-				$compras=mysql_query("SELECT * FROM historico");
-			}
+	$sem_paginamento=isset($_GET["all"]);
+	if ($sem_paginamento) {
+		$compras=mysql_query("SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp");
+	}
 
-			setlocale(LC_MONETARY, "pt_BR", "ptb");
-			include_once("menu_admin.php");
-		?>
+	$sql=mysql_query("SELECT id FROM historico");
+	$total_compras=mysql_num_rows($sql);
 
-		<div class="container theme-showcase" role="main">
-			<?php if (isset($_GET["success"])) { ?>
-				<div class="alert alert-success" role="alert">
-					<center><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</center>
-				</div>
-			<?php } ?>
+	setlocale(LC_MONETARY, "pt_BR", "ptb");
+	setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+	date_default_timezone_set('America/Sao_Paulo');
+?>
 
-			<div class="page-header">
+<div class="container theme-showcase" role="main">
+	<?php if (isset($_GET["success"])) { ?>
+		<div class="alert alert-success" role="alert">
+			<center><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</center>
+		</div>
+	<?php } ?>
+
+	<div class="page-header">
+
+		<div class="row">
+			<div class="col-sm-6">
 				<h1>Histórico de compras</h1>
-				<?php if ($acampante_id > 0) { ?>
-					<h3><b>Acampante: </b><?=$acampante["nome"]?> - <?=$acampante["equipe"]?></h3>
-					<a href="historico.php">Histórico de todos os acampantes</a>
-				<?php } else { ?>
-					<h3><b>Todos acampantes</b></h3>
-				<?php } ?>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<table class="table table-hover table-bordered responsive-table">
-						<thead>
-							<tr class="active">
-								<th style="text-align: center">#</th>
-								<?php if ($acampante_id == 0) { ?>
-								<th style="text-align: center">Nome</th>
-								<th style="text-align: center">Equipe</th>
-								<?php } ?>
-								<th style="text-align: center">Valor</th>
-								<th style="text-align: center">Descrição</th>
-								<th style="text-align: center" colspan="2">A&ccedil;&otilde;es</th>
-							</tr>
-						</thead>
-
-						<tbody>
-						<?php $num=1; ?>
-						<?php while ($compra = mysql_fetch_array($compras)) { ?>
-							<tr>
-								<td align="center"><?=$num++?></td>
-								<?php if ($acampante_id == 0) { ?>
-								<?php
-									$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
-									$acampante=mysql_fetch_array($sql);
-								?>
-								<td style="text-align: center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante['nome']?></a></td>
-								<td align="center"><?=$acampante["equipe"]?></td>
-								<?php } ?>
-								<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
-								<td align="center"><?=$compra["descricao"]?></td>
-								<td align="center"><a href=<?="editando_historico.php?acampante_id=".$compra['acampante_id']."&compra_id=".$compra['id']?>>Editar</a></td>
-								<td align="center"><a href="excluir_historico.php?id=<?=$compra['id']?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a></td>
-							</tr>
-						<?php } ?>
-						</tbody>
-					</table>
-				</div>
+			<div class="col-sm-6 text-right h2">
+			<?php if ($total_compras > $quantidade && $acampante_id == 0) { ?>
+				<?php if ($sem_paginamento) { ?>
+					<a class="btn btn-default" href="historico.php"><i class="fa fa-file-text-o"></i> Com paginamento</a>
+				<?php } else { ?>
+					<a class="btn btn-default" href="historico.php?all"><i class="fa fa-file-text-o"></i> Sem paginamento</a>
+				<?php } ?>
+				<a class="btn btn-default" href="listagem.php"><i class="fa fa-refresh"></i> Atualizar</a>
+			<?php } ?>
 			</div>
 		</div>
-		<?php include_once("footer.php");?>
-	</body>
-</html>
+
+		<?php if ($acampante_id > 0) { ?>
+			<h3><b>Acampante: </b><?=$acampante["nome"]?> - <?=$acampante["equipe"]?></h3>
+			<h4><b>Saldo: </b><?='R$ '.number_format($acampante["conta"], 2, ',', '.')?></h4>
+			<a href="historico.php">Histórico de todos os acampantes</a>
+		<?php } else { ?>
+			<h3><b>Todos acampantes</b></h3>
+		<?php } ?>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-hover table-bordered responsive-table">
+				<thead>
+					<tr class="active">
+						<th style="text-align: center">#</th>
+						<th style="text-align: center">Data - Horário</th>
+						<?php if ($acampante_id == 0) { ?>
+						<th style="text-align: center">Nome</th>
+						<th style="text-align: center">Equipe</th>
+						<?php } ?>
+						<th style="text-align: center">Valor</th>
+						<th style="text-align: center">Descrição</th>
+						<th style="text-align: center" colspan="2">A&ccedil;&otilde;es</th>
+					</tr>
+				</thead>
+
+				<tbody>
+				<?php $num=1; ?>
+				<?php while ($compra = mysql_fetch_array($compras)) { ?>
+					<tr>
+						<td align="center"><?=$num++?></td>
+						<td align="center"><?=strftime('%d/%m (%a) - %H:%M', strtotime($compra["timestamp"]));?></td>
+						<?php if ($acampante_id == 0) {
+							$sql=mysql_query("SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
+							$acampante=mysql_fetch_array($sql);
+						?>
+						<td align="center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante['nome']?></a></td>
+						<td align="center"><?=$acampante["equipe"]?></td>
+						<?php } ?>
+						<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
+						<td align="center"><?=$compra["descricao"]?></td>
+						<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href=<?="editando_historico.php?acampante_id=".$compra['acampante_id']."&compra_id=".$compra['id']?>><i class="fa fa-pencil-square-o"></i></a></td>
+						<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_historico.php?id=<?=$compra['id']?>" onclick="return confirm('Deseja mesmo excluir?');"><i class="fa fa-trash-o"></i></a></td>
+					</tr>
+				<?php } ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<?php
+		$total_pagina=ceil($total_compras/$quantidade);
+
+		// Define o valor máximo a ser exibido na página tanto para direita quanto pra esquerda
+		$exibir=$quantidade;
+
+		$prev = (($pagina-1) == 0) ? 1 : $pagina-1;
+		$prox = (($pagina+1) >= $total_pagina) ? $total_pagina : $pagina+1;
+	?>
+
+	<?php if ($prev != $prox && $prox > 0 && !$sem_paginamento && $acampante_id == 0) { ?>
+		<div id="navegacao" align="center">
+			<a href="?pagina=1"><<</a> | <a href="?pagina=<?=$anterior?>"><</a>
+			<?=" | "?>
+			<?php for ($i=$pagina-$exibir; $i<=$pagina-1; $i++) { ?>
+				<?php if ($i>0) { ?>
+					<a href="?pagina=<?=$i?>"><?=$i?></a>
+				<?php } ?>
+			<?php } ?>
+
+			<a href="?pagina=<?=$pagina?>"><strong><?=$pagina?></strong></a>
+
+			<?php for ($i=$pagina+1; $i<$pagina+$exibir; $i++) { ?>
+				<?php if ($i<=$total_pagina) { ?>
+					<a href="?pagina=<?=$i?>"><?=$i?></a>
+				<?php } ?>
+			<?php } ?>
+
+			<?=" | "?>
+			<a href="?pagina=<?=$prox?>">></a>
+			<?=" | "?>
+			<a href="?pagina=<?=$total_pagina?>">>></a>
+		</div>
+	<?php } ?>
+</div>
+<?php include_once("footer.php");?>

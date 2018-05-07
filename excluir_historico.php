@@ -13,13 +13,14 @@
 	if (mysql_affected_rows() >= 0) {
 		mysql_query("DELETE FROM historico WHERE id=".$_GET['id']);
 	}
-?>
 
-<script>
-<?php if (mysql_affected_rows() < 0) { ?>
-	alert('Erro ao excluir historico do banco de dados');
-<?php } else { ?>
-	alert('Historico exluido com sucesso. O valor foi restituido para a conta acampante');
-<?php } ?>
-	window.location.replace("historico.php");
-</script>
+	echo "<script>";
+	if (mysql_affected_rows() > 0) {
+		echo "alert('Historico exluido com sucesso. O valor foi restituido para a conta acampante');";
+	} else {
+		echo "alert('Erro ao excluir historico do banco de dados');";
+	}
+
+	echo "window.location.replace('historico.php?id=".$acampante['id']."');";
+	echo "</script>";
+?>

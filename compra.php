@@ -18,6 +18,6 @@
 	if (mysql_affected_rows() < 0) {
 		header("location:comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&descricao=<?=$descricao?>&error");
 	} else {
-		header("location:historico.php?success");
+		header("location:listagem.php?success");
 	}
 ?>
