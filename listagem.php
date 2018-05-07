@@ -46,12 +46,14 @@
 				<tbody>
 					<?php $num=1; ?>
 					<?php while($acampante = mysqli_fetch_array($acampantes)) { ?>
-						<?php $resultado = mysqli_query($con, "select nome from equipes where id=".$acampante['equipe_id']) ?>
-						<?php $equipe_nome = mysqli_fetch_array($resultado)['nome'] ?>
+						<?php
+							$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
+							$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
+						?>
 						<tr>
 							<td align="center"><?=$num++?></td>
 							<td align="center"><?=$acampante['nome']?></td>
-							<td align="center"><?=$equipe_nome?></td>
+							<td align="center"><?=$acampante['equipe']?></td>
 							<td align="center"<?=$acampante['conta']<=0 ? " style='color:red;'" : ""?>>
 								<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
 							<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" href="comprando.php?id=<?=$acampante['id']?>"><i class="fa fa-shopping-cart"></i></a></td>

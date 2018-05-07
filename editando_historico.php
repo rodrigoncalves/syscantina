@@ -4,6 +4,8 @@
 
 	$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$_GET["acampante_id"]);
 	$acampante=mysqli_fetch_array($sql);
+	$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
+	$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
 
 	$sql=mysqli_query($con, "SELECT * FROM historico WHERE id=".$_GET["compra_id"]);
 	$compra=mysqli_fetch_array($sql);

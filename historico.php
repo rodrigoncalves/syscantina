@@ -16,6 +16,8 @@
 	if ($acampante_id > 0) {
 		$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=$acampante_id");
 		$acampante=mysqli_fetch_array($sql);
+		$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
+		$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
 	}
 
 	$compras=mysqli_query($con, "SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp DESC LIMIT $inicio, $quantidade");
@@ -92,6 +94,8 @@
 						<?php if ($acampante_id == 0) {
 							$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
 							$acampante=mysqli_fetch_array($sql);
+							$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
+							$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
 						?>
 						<td align="center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante['nome']?></a></td>
 						<td align="center"><?=$acampante["equipe"]?></td>

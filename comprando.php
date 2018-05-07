@@ -5,6 +5,9 @@
 	$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$_GET["id"]);
 	$acampante=mysqli_fetch_array($sql);
 
+	$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
+	$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
+
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>
 
