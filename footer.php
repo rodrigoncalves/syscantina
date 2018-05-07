@@ -4,7 +4,7 @@
 
 <div class="rodape" align="center">
 	<br>
-	<span style='color:white;'>Sistema Cantinha. Versão 1.0. Copyright (C) 2017</span>
+	<span style='color:white;'>Sistema Cantinha. Versão 2.0. Copyright (C) 2018</span>
 </div>
 
 <!-- Bootstrap core JavaScript
