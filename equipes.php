@@ -24,8 +24,8 @@
                 <h1>Lista de equipes</h1>
             </div>
             <div class="col-sm-6 text-right h2">
-                <a class="btn btn-primary" href="cadastrando.php"><i class="fa fa-plus"></i> Cadastrar novo</a>
-                <a class="btn btn-default" href="listagem.php"><i class="fa fa-refresh"></i> Atualizar</a>
+                <a class="btn btn-primary" href="form_equipe.php"><i class="fa fa-plus"></i> Cadastrar novo</a>
+                <a class="btn btn-default" href="equipes.php"><i class="fa fa-refresh"></i> Atualizar</a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
                         <tr>
                             <td align="center"><?=$num++?></td>
                             <td align="center"><?=$equipe['nome']?></td>
-                            <td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="editando_equipe.php?id=<?=$equipe['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
+                            <td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="form_equipe.php?id=<?=$equipe['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
                             <td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_equipe.php?id=<?=$equipe['id']?>" onclick="return confirm('Deseja mesmo excluir?');"><i class="fa fa-trash-o"></i></a></td>
                         </tr>
                     <?php } ?>
