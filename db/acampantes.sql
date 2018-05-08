@@ -32,6 +32,7 @@ CREATE TABLE `acampantes` (
   `nome` varchar(60) NOT NULL,
   `conta` decimal(5,2) DEFAULT NULL,
   `equipe_id` int(255) NOT NULL,
+  `quitado` TINYINT(1) NOT NULL DEFAULT FALSE,
   `id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

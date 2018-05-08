@@ -32,7 +32,7 @@
 						<th style="text-align: center">Nome</th>
 						<th style="text-align: center">Equipe</th>
 						<th style="text-align: center">Saldo</th>
-						<th style="text-align: center" colspan="4">Ações</th>
+						<th style="text-align: center" colspan="5">Ações</th>
 					</tr>
 				</thead>
 
@@ -43,7 +43,7 @@
 							$sql=mysqli_query($con, "SELECT * FROM equipes WHERE id=".$acampante['equipe_id']);
 							$acampante['equipe']=mysqli_fetch_array($sql);
 						?>
-						<tr>
+						<tr <?=$acampante['quitado']?'class="success"':''?>>
 							<td align="center"><?=$num++?></td>
 							<td align="center"><?=$acampante['nome']?></td>
 							<td align="center">
@@ -55,10 +55,15 @@
 							</td>
 							<td align="center"<?=$acampante['conta']<=0 ? " style='color:red;'" : ""?>>
 								<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
-							<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" href="form_compra.php?id=<?=$acampante['id']?>"><i class="fa fa-shopping-cart"></i></a></td>
+							<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" href="form_compra.php?id=<?=$acampante['id']?>" <?=$acampante['quitado']?"disabled":""?>><i class="fa fa-shopping-cart"></i></a></td>
 							<td align="center"><a class="btn btn-success btn-xs" title="Histórico" href="historico.php?id=<?=$acampante['id']?>"><i class="fa fa-history"></i></a></td>
 							<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="form_acampante.php?id=<?=$acampante['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
 							<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Excluir um acampante implica em excluir tambem seus registros de compra. Tem certeza que deseja continuar?');"><i class="fa fa-trash-o"></i></a></td>
+							<?php if ($acampante['quitado']) { ?>
+								<td align="center"><a class="btn btn-danger btn-xs" title="Desfazer quitar" href="quitar_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Deseja desfazer a marcação de quitado deste acampante?');"><i class="fa fa-check"></i></a></td>
+							<?php } else { ?>
+								<td align="center"><a class="btn btn-success btn-xs" title="Quitar" href="quitar_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Deseja marcar este acampante como quitado?');"><i class="fa fa-check"></i></a></td>
+							<?php } ?>
 						</tr>
 					<?php } ?>
 				</tbody>
