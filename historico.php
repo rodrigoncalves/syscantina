@@ -102,7 +102,7 @@
 						<?php } ?>
 						<td align="center"><?='R$ '.number_format($compra["valor_compra"], 2, ',', '.')?></td>
 						<td align="center"><?=$compra["descricao"]?></td>
-						<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href=<?="editando_historico.php?acampante_id=".$compra['acampante_id']."&compra_id=".$compra['id']?>><i class="fa fa-pencil-square-o"></i></a></td>
+						<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href=<?="form_compra.php?acampante_id=".$compra['acampante_id']."&compra_id=".$compra['id']?>><i class="fa fa-pencil-square-o"></i></a></td>
 						<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_historico.php?id=<?=$compra['id']?>" onclick="return confirm('Deseja mesmo excluir?');"><i class="fa fa-trash-o"></i></a></td>
 					</tr>
 				<?php } ?>

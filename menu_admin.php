@@ -11,14 +11,19 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li <?=strpos($_SERVER["REQUEST_URI"], "index.php")!==false?'class="active"':""?>><a href="index.php">Início</a></li>
+				<li <?=strpos($_SERVER["REQUEST_URI"], "index.php")
+					!==false?'class="active"':""?>><a href="index.php">Início</a></li>
 				<li <?=strpos($_SERVER["REQUEST_URI"], "acampantes.php")
-					|| strpos($_SERVER["REQUEST_URI"], "editando.php")
-					|| strpos($_SERVER["REQUEST_URI"], "cadastrando.php")
-					|| strpos($_SERVER["REQUEST_URI"], "comprando.php")!== false?'class="active"':""?>><a href="acampantes.php">Acampantes</a></li>
+					|| strpos($_SERVER["REQUEST_URI"], "form_acampante.php")
+					|| strpos($_SERVER["REQUEST_URI"], "form_compra.php?id")
+					!==false?'class="active"':""?>><a href="acampantes.php">Acampantes</a></li>
 				<li <?=strpos($_SERVER["REQUEST_URI"], "equipes.php")
-					|| strpos($_SERVER["REQUEST_URI"], "ver_equipe.php")!==false?'class="active"':""?>><a href="equipes.php">Equipes</a></li>
-				<li <?=strpos($_SERVER["REQUEST_URI"], "historico.php")!==false?'class="active"':""?>><a href="historico.php">Histórico</a></li>
+					|| strpos($_SERVER["REQUEST_URI"], "form_equipe.php")
+					|| strpos($_SERVER["REQUEST_URI"], "ver_equipe.php")
+					!==false?'class="active"':""?>><a href="equipes.php">Equipes</a></li>
+				<li <?=strpos($_SERVER["REQUEST_URI"], "historico.php")
+					|| strpos($_SERVER["REQUEST_URI"], "form_compra.php?acampante_id")
+					!==false?'class="active"':""?>><a href="historico.php">Histórico</a></li>
 			</ul>
 		</div>
 	</div>

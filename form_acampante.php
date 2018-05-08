@@ -10,8 +10,6 @@
 		$nome=$acampante["nome"];
 		$equipe_id=$acampante["equipe_id"];
 		$conta=$acampante["conta"];
-
-		setlocale(LC_MONETARY, "pt_BR", "ptb");
 	} else {
 		$nome = isset($_GET["nome"]) ? $_GET["nome"] : "";
 		$equipe_id = isset($_GET["equipe_id"]) ? $_GET["equipe_id"] : "";
@@ -20,6 +18,7 @@
 
 	$conta = isset($conta) ? number_format($conta, 2, ',', '.') : $conta;
 	$equipes = mysqli_query($con, "SELECT * FROM equipes");
+	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>
 
 <div class="container theme-showcase" role="main">
