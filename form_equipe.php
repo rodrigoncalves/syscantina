@@ -11,8 +11,6 @@
 	if (isset($_GET["nome"])) {
 		$equipe['nome'] = $_GET["nome"];
 	}
-
-	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>
 
 <div class="container theme-showcase">

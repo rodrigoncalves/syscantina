@@ -17,7 +17,7 @@
 				<h1><?=$titulo?></h1>
 			</div>
 			<div class="col-sm-6 text-right h2">
-				<a class="btn btn-primary" href="cadastrando.php"><i class="fa fa-plus"></i> Cadastrar novo</a>
+				<a class="btn btn-primary" href="form_acampante.php"><i class="fa fa-plus"></i> Cadastrar novo</a>
 				<a class="btn btn-default" href=<?=$source?>><i class="fa fa-refresh"></i> Atualizar</a>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 								<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
 							<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" href="comprando.php?id=<?=$acampante['id']?>"><i class="fa fa-shopping-cart"></i></a></td>
 							<td align="center"><a class="btn btn-success btn-xs" title="Histórico" href="historico.php?id=<?=$acampante['id']?>"><i class="fa fa-history"></i></a></td>
-							<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="editando.php?id=<?=$acampante['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
+							<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="form_acampante.php?id=<?=$acampante['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
 							<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Excluir um acampante implica em excluir tambem seus registros de compra. Tem certeza que deseja continuar?');"><i class="fa fa-trash-o"></i></a></td>
 						</tr>
 					<?php } ?>
