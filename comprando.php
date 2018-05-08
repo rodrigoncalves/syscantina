@@ -33,7 +33,7 @@
 		</div>
 
 		<div class="form-group">
-			<label for="conta">Saldo dispon&iacute;vel</label>
+			<label for="conta">Saldo disponível</label>
 			<input type="text" name="saldo" class="form-control" <?=$acampante['conta']<=0?" style='color:red';":""?>
 				value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
 		</div>

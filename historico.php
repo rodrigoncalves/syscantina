@@ -38,7 +38,7 @@
 <div class="container theme-showcase" role="main">
 	<?php if (isset($_GET["success"])) { ?>
 		<div class="alert alert-success" role="alert">
-			<center><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</center>
+			<center><strong>Sucesso!</strong> Operação realizada com sucesso!</center>
 		</div>
 	<?php } ?>
 
@@ -81,7 +81,7 @@
 						<?php } ?>
 						<th style="text-align: center">Valor</th>
 						<th style="text-align: center">Descrição</th>
-						<th style="text-align: center" colspan="2">A&ccedil;&otilde;es</th>
+						<th style="text-align: center" colspan="2">Ações</th>
 					</tr>
 				</thead>
 

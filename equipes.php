@@ -8,7 +8,7 @@
 <div class="container theme-showcase" role="main">
 	<?php if (isset($_GET["success"])) { ?>
 		<div class="alert alert-success" role="alert">
-			<center><strong>Sucesso!</strong> Opera&ccedil;&atilde;o realizada com sucesso!</center>
+			<center><strong>Sucesso!</strong> Operação realizada com sucesso!</center>
 		</div>
 	<?php } ?>
 
@@ -37,7 +37,7 @@
 					<tr class="active">
 						<th style="text-align: center">#</th>
 						<th style="text-align: center">Nome</th>
-						<th style="text-align: center" colspan="2">A&ccedil;&otilde;es</th>
+						<th style="text-align: center" colspan="3">Ações</th>
 					</tr>
 				</thead>
 
@@ -46,8 +46,9 @@
 					<?php while($equipe = mysqli_fetch_array($equipes)) { ?>
 						<tr>
 							<td align="center"><?=$num++?></td>
-							<td align="center"><?=$equipe['nome']?></td>
-							<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="form_equipe.php?id=<?=$equipe['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
+							<td align="center"><?=$equipe['nome']?></td>]
+							<td align="center"><a class="btn btn-primary btn-xs" title="Ver" href="historico.php?id=<?=$acampante['id']?>"><i class="fa fa-history"></i></a></td>
+							<td align="center"><a class="btn btn-success btn-xs" title="Editar" href="form_equipe.php?id=<?=$equipe['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
 							<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_equipe.php?id=<?=$equipe['id']?>" onclick="return confirm('Deseja mesmo excluir?');"><i class="fa fa-trash-o"></i></a></td>
 						</tr>
 					<?php } ?>
