@@ -1,6 +1,6 @@
 <?php
 	if (!isset($_GET["id"])) {
-		header("location:listagem.php");
+		header("location:acampantes.php");
 	}
 
 	include_once("conexao.php");
@@ -52,7 +52,7 @@
 				<input type="hidden" name="acampante_id" value="<?=$_GET['id']?>">
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
-				<a href="listagem.php" class="btn btn-default">Cancelar</a>
+				<a href="acampantes.php" class="btn btn-default">Cancelar</a>
 			</form>
 		</div>
 	</div>

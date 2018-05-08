@@ -15,6 +15,6 @@
 	if (mysqli_affected_rows($con) < 0) {
 		header("location:cadastrando.php?nome=$nome&equipe_id=$equipe_id&conta=$conta&error");
 	} else {
-		header("location:listagem.php?success");
+		header("location:acampantes.php?success");
 	}
 ?>

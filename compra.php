@@ -18,6 +18,6 @@
 	if (mysqli_affected_rows($con) < 0) {
 		header("location:comprando.php?nome=<?=$nome?>&equipe=<?=$equipe?>&saldo=<?=$saldo?>&valor_compra=<?=$valor_compra?>&descricao=<?=$descricao?>&error");
 	} else {
-		header("location:listagem.php?success");
+		header("location:acampantes.php?success");
 	}
 ?>

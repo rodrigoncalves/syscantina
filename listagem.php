@@ -1,10 +1,3 @@
-<?php
-	include_once("conexao.php");
-	include_once("header.php");
-	$acampantes=mysqli_query($con, "SELECT * FROM acampantes ORDER BY nome");
-	setlocale(LC_MONETARY, "pt_BR", "ptb");
-?>
-
 <div class="container theme-showcase" role="main">
 	<?php if (isset($_GET["success"])) { ?>
 		<div class="alert alert-success" role="alert">
@@ -21,11 +14,11 @@
 	<div class="page-header">
 		<div class="row">
 			<div class="col-sm-6">
-				<h1>Lista de acampantes</h1>
+				<h1><?=$titulo?></h1>
 			</div>
 			<div class="col-sm-6 text-right h2">
 				<a class="btn btn-primary" href="cadastrando.php"><i class="fa fa-plus"></i> Cadastrar novo</a>
-				<a class="btn btn-default" href="listagem.php"><i class="fa fa-refresh"></i> Atualizar</a>
+				<a class="btn btn-default" href=<?=$source?><i class="fa fa-refresh"></i> Atualizar</a>
 			</div>
 		</div>
 	</div>
@@ -47,13 +40,19 @@
 					<?php $num=1; ?>
 					<?php while($acampante = mysqli_fetch_array($acampantes)) { ?>
 						<?php
-							$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
-							$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
+							$sql=mysqli_query($con, "SELECT * FROM equipes WHERE id=".$acampante['equipe_id']);
+							$acampante['equipe']=mysqli_fetch_array($sql);
 						?>
 						<tr>
 							<td align="center"><?=$num++?></td>
 							<td align="center"><?=$acampante['nome']?></td>
-							<td align="center"><?=$acampante['equipe']?></td>
+							<td align="center">
+								<?php if ($source=="acampantes.php") { ?>
+									<a href="ver_equipe.php?id=<?=$acampante['equipe']['id']?>"><?=$acampante['equipe']['nome']?></a>
+								<?php } else { ?>
+									<?=$acampante['equipe']['nome']?>
+								<?php } ?>
+							</td>
 							<td align="center"<?=$acampante['conta']<=0 ? " style='color:red;'" : ""?>>
 								<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
 							<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" href="comprando.php?id=<?=$acampante['id']?>"><i class="fa fa-shopping-cart"></i></a></td>

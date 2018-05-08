@@ -13,7 +13,7 @@
 	if (mysqli_affected_rows($con) < 0) {
 		header("location:editando.php?id=$acampante_id&error");
 	} else {
-		header("location:listagem.php?success");
+		header("location:acampantes.php?success");
 	}
 
 ?>

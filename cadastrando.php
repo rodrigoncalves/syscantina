@@ -41,7 +41,7 @@
 				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
-				<a href="listagem.php" class="btn btn-default">Cancelar</a>
+				<a href="acampantes.php" class="btn btn-default">Cancelar</a>
 			</form>
 		</div>
 	</div>

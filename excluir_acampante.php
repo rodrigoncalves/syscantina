@@ -7,9 +7,9 @@
 	echo "<script>";
 	if (mysqli_affected_rows($con) > 0) {
 		echo "alert('Acampante excluido com sucesso');";
-		echo "window.location.replace('listagem.php')";
+		echo "window.location.replace('acampantes.php')";
 	} else {
-		echo "window.location.replace('listagem.php?error')";
+		echo "window.location.replace('acampantes.php?error')";
 	}
 
 	echo "</script>";

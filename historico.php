@@ -55,7 +55,7 @@
 				<?php } else { ?>
 					<a class="btn btn-default" href="historico.php?all"><i class="fa fa-file-text-o"></i> Sem paginamento</a>
 				<?php } ?>
-				<a class="btn btn-default" href="listagem.php"><i class="fa fa-refresh"></i> Atualizar</a>
+				<a class="btn btn-default" href="historico.php"><i class="fa fa-refresh"></i> Atualizar</a>
 			<?php } ?>
 			</div>
 		</div>

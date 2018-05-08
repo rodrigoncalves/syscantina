@@ -46,8 +46,8 @@
 					<?php while($equipe = mysqli_fetch_array($equipes)) { ?>
 						<tr>
 							<td align="center"><?=$num++?></td>
-							<td align="center"><?=$equipe['nome']?></td>]
-							<td align="center"><a class="btn btn-primary btn-xs" title="Ver" href="historico.php?id=<?=$acampante['id']?>"><i class="fa fa-history"></i></a></td>
+							<td align="center"><?=$equipe['nome']?></td>
+							<td align="center"><a class="btn btn-primary btn-xs" title="Ver" href="ver_equipe.php?id=<?=$equipe['id']?>"><i class="fa fa-info-circle"></i></a></td>
 							<td align="center"><a class="btn btn-success btn-xs" title="Editar" href="form_equipe.php?id=<?=$equipe['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
 							<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_equipe.php?id=<?=$equipe['id']?>" onclick="return confirm('Deseja mesmo excluir?');"><i class="fa fa-trash-o"></i></a></td>
 						</tr>
