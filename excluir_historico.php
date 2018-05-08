@@ -16,9 +16,9 @@
 
 	echo "<script>";
 	if (mysqli_affected_rows($con) > 0) {
-		echo "alert('Historico excluido com sucesso. O valor foi restituido para a conta do acampante');";
+		echo "alert('Histórico excluído com sucesso. O valor foi restituído para a conta do acampante');";
 	} else {
-		echo "alert('Erro ao excluir historico do banco de dados');";
+		echo "alert('Erro ao excluir histórico do banco de dados');";
 	}
 
 	echo "window.location.replace('historico.php?id=".$acampante['id']."');";

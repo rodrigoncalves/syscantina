@@ -32,7 +32,7 @@ function SomenteNumero(e) {
 }
 
 function FormatCurrency(ctrl) {
-		//Check if arrow keys are pressed - we want to allow navigation around textbox using arrow keys
+		// Check if arrow keys are pressed - we want to allow navigation around textbox using arrow keys
 		var key = event.keyCode;
 		if (key >= 36 && key <= 40 || key == 188 || key == 190 || key == 17) {
 				return;
@@ -49,7 +49,7 @@ function FormatCurrency(ctrl) {
 		var rgx = /(\d+)(\d{3})/;
 
 		while (rgx.test(x1)) {
-				x1 = x1.replace(rgx, '$1' + '.' + '$2');
+			x1 = x1.replace(rgx, '$1' + '.' + '$2');
 		}
 
 		ctrl.value = x1 + x2;

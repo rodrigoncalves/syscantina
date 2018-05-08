@@ -5,7 +5,7 @@
 
 	echo "<script>";
 	if (mysqli_affected_rows($con) > 0) {
-		echo "alert('Equipe excluido com sucesso');";
+		echo "alert('Equipe excluída com sucesso');";
 		echo "window.location.replace('equipes.php')";
 	} else {
 		echo "window.location.replace('equipes.php?error')";
