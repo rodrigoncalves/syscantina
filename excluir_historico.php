@@ -1,17 +1,19 @@
 <?php
 	include_once("conexao.php");
-	$sql=mysqli_query($con, "SELECT * FROM historico WHERE id=".$_GET["id"]);
-	$compra=mysqli_fetch_array($sql);
+	$id = $_GET['id'];
 
-	$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
-	$acampante=mysqli_fetch_array($sql);
+	$res=mysqli_query($con, "SELECT * FROM historico WHERE id=$id");
+	$compra=mysqli_fetch_array($res);
+
+	$res=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
+	$acampante=mysqli_fetch_array($res);
 
 	$novo_saldo = $acampante["conta"] + $compra["valor_compra"];
 
-	mysqli_query($con, "UPDATE acampantes SET conta=$novo_saldo WHERE id=".$compra['acampante_id']);
+	mysqli_query($con, "UPDATE acampantes SET conta=$novo_saldo WHERE id=$compra['acampante_id']");
 
 	if (mysqli_affected_rows($con) >= 0) {
-		mysqli_query($con, "DELETE FROM historico WHERE id=".$_GET['id']);
+		mysqli_query($con, "DELETE FROM historico WHERE id=$id");
 	}
 
 	echo "<script>";
