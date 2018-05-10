@@ -1,10 +1,17 @@
 <?php
     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"], 1);
+    if (isset($url["host"])) {
+        $server = $url["host"];
+        $username = $url["user"];
+        $password = $url["pass"];
+        $db = substr($url["path"], 1);
+    } else {
+        $server = "localhost";
+        $username = "root";
+        $password = "";
+        $db = "acampantes";
+    }
 
     $con = mysqli_connect($server , $username, $password) or die ("Erro na conexão");
     mysqli_set_charset($con, 'utf8');
