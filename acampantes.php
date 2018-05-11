@@ -5,8 +5,8 @@
 
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 
-    $titulo = "Lista de acampantes";
-    $source = basename(__FILE__);
+	$titulo = "Lista de acampantes";
+	$source = basename(__FILE__);
 
 	include_once("listagem.php");
 ?>
