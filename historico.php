@@ -62,7 +62,7 @@
 
 		<?php if ($acampante_id > 0) { ?>
 			<h3><b>Acampante: </b><?=$acampante["nome"]?> - <?=$acampante["equipe"]?></h3>
-			<h4><b>Saldo: </b><?='R$ '.number_format($acampante["conta"], 2, ',', '.')?></h4>
+			<h4 <?=$acampante['saldo']<=0?" style='color:red';":""?>><b>Saldo: </b><?='R$ '.number_format($acampante["saldo"], 2, ',', '.')?></h4>
 			<a href="historico.php">Histórico de todos os acampantes</a>
 		<?php } else { ?>
 			<h3><b>Todos acampantes</b></h3>
