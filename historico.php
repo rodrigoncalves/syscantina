@@ -107,6 +107,13 @@
 					</tr>
 				<?php } ?>
 				</tbody>
+				<tfoot>
+				<?php if ($acampante_id == 0) { ?>
+					<tr><th colspan="9">Total de vendas: <?='R$ '.number_format($total_vendas, 2, ',', '.')?></th></tr>
+				<?php } else { ?>
+					<tr><th colspan="9">Total de compras: <?='R$ '.number_format($total_compras, 2, ',', '.')?></th></tr>
+				<?php } ?>
+				</tfoot>
 			</table>
 		</div>
 	</div>

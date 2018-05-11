@@ -39,14 +39,10 @@
 
 				<tbody>
 					<?php $num=1; ?>
-					<?php $total_arrecadado=0; ?>
-					<?php $total_quitar=0; ?>
 					<?php while($acampante = mysqli_fetch_array($acampantes)) { ?>
 						<?php
 							$sql=mysqli_query($con, "SELECT * FROM equipes WHERE id=".$acampante['equipe_id']);
 							$acampante['equipe']=mysqli_fetch_array($sql);
-							$total_arrecadado += $acampante['conta'];
-							$total_quitar += ($acampante['quitado'] ? 0 : $acampante['saldo']);
 						?>
 						<tr <?=$acampante['quitado']?'class="success"':''?>>
 							<td align="center"><?=$num++?></td>
@@ -75,8 +71,8 @@
 					<?php } ?>
 				</tbody>
 				<tfoot>
-					<tr><th colspan="9">Total arrecadado: <?='R$ '.number_format($total_arrecadado, 2, ',', '.')?></th></tr>
-					<tr><th colspan="9">Total a quitar: <?='R$ '.number_format($total_quitar, 2, ',', '.')?></th></tr>
+					<tr><th colspan="10">Total arrecadado: <?='R$ '.number_format($total_arrecadado, 2, ',', '.')?></th></tr>
+					<tr><th colspan="10">Total a quitar: <?='R$ '.number_format($total_quitar, 2, ',', '.')?></th></tr>
 				</tfoot>
 			</table>
 		</div>
