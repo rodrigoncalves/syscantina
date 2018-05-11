@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Maio-2018 às 19:42
+-- Generation Time: 11-Maio-2018 às 02:05
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -31,8 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `acampantes` (
   `nome` varchar(60) NOT NULL,
   `conta` decimal(5,2) DEFAULT NULL,
+  `saldo` decimal(5,2) DEFAULT NULL,
   `equipe_id` int(255) NOT NULL,
-  `quitado` TINYINT(1) NOT NULL DEFAULT FALSE,
+  `quitado` tinyint(1) NOT NULL DEFAULT '0',
   `id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -46,25 +47,6 @@ CREATE TABLE `equipes` (
   `id` int(11) NOT NULL,
   `nome` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `equipes`
---
-
-INSERT INTO `equipes` (`id`, `nome`) VALUES
-(1, 'Rúben'),
-(2, 'Simeão'),
-(3, 'Levi'),
-(4, 'Judá'),
-(5, 'Dã'),
-(6, 'Naftali'),
-(7, 'Gade'),
-(8, 'Aser'),
-(9, 'Issacar'),
-(10, 'Zebulom'),
-(11, 'José'),
-(12, 'Benjamim'),
-(13, 'COLABORADOR');
 
 -- --------------------------------------------------------
 
@@ -110,19 +92,19 @@ ALTER TABLE `historico`
 -- AUTO_INCREMENT for table `acampantes`
 --
 ALTER TABLE `acampantes`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `equipes`
 --
 ALTER TABLE `equipes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
