@@ -41,7 +41,7 @@
 		</div>
 	<?php } ?>
 
-	<?php if ($acampante['conta']<=0) { ?>
+	<?php if ($acampante['saldo']<=0) { ?>
 		<div class="alert alert-danger" role="alert">
 			<center><strong>Atenção: </strong><?=$acampante['nome']?> não tem saldo suficiente. Antes de realizar a compra, tenha certeza que deseja continuar.</center>
 		</div>
@@ -65,19 +65,19 @@
 		</div>
 
 		<div class="form-group">
-			<label for="conta">Saldo disponível</label>
-			<input type="text" class="form-control" <?=$acampante['conta']<=0?" style='color:red';":""?>
-				value="<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?>" disabled>
+			<label for="saldo">Saldo disponível</label>
+			<input type="text" class="form-control" <?=$acampante['saldo']<=0?" style='color:red';":""?>
+				value="<?='R$ '.number_format($acampante['saldo'], 2, ',', '.')?>" disabled>
 		</div>
 
 		<div class="form-group">
-			<label for="conta">Valor da compra</label>
-			<input name="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" onkeyup="return FormatCurrency(this)" value=<?=$valor_compra?>>
+			<label for="valor_compra">Valor da compra</label>
+			<input name="valor_compra" id="valor_compra" type="text" class="form-control" placeholder="0.00" onkeypress="return SomenteNumero(event);" maxlength="6" onkeyup="return FormatCurrency(this)" value=<?=$valor_compra?>>
 		</div>
 
 		<div class="form-group">
-			<label for="conta">Descrição</label>
-			<textarea name="descricao" class="form-control" rows="3" maxlength="255"><?=$descricao?></textarea>
+			<label for="descricao">Descrição</label>
+			<textarea name="descricao" id="descricao" class="form-control" rows="3" maxlength="255"><?=$descricao?></textarea>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Salvar</button>

@@ -10,13 +10,16 @@
 		$nome=$acampante["nome"];
 		$equipe_id=$acampante["equipe_id"];
 		$conta=$acampante["conta"];
+		$saldo=$acampante["saldo"];
 	} else {
 		$nome = isset($_GET["nome"]) ? $_GET["nome"] : "";
 		$equipe_id = isset($_GET["equipe_id"]) ? $_GET["equipe_id"] : "";
 		$conta = isset($_GET["conta"]) ? $_GET["conta"] : null;
+		$saldo = null;
 	}
 
 	$conta = isset($conta) ? number_format($conta, 2, ',', '.') : $conta;
+	$saldo = isset($saldo) ? number_format($saldo, 2, ',', '.') : $saldo;
 	$equipes = mysqli_query($con, "SELECT * FROM equipes");
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 ?>
@@ -52,9 +55,15 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="conta"><?=isset($acampante_id)?"Saldo da conta":"Valor a ser depositado"?></label><span style='color:red;'>*</span>
+					<label for="conta"><?=isset($acampante_id)?"Valor depositado":"Valor a ser depositado"?></label><span style='color:red;'>*</span>
 					<input name="conta" type="text" class="form-control" id="conta" placeholder="0,00" onkeypress="return SomenteNumero(event);" onkeyup="return FormatCurrency(this)" maxlength="6" value=<?=$conta?>>
 				</div>
+				<?php if (isset($saldo)) { ?>
+					<div class="form-group">
+						<label for="saldo">Saldo da conta</label>
+						<input class="form-control" id="saldo" disabled value=<?=$saldo?>>
+					</div>
+				<?php } ?>
 
 				<?php if(isset($acampante_id)) { ?>
 					<input type="hidden" name="acampante_id" value="<?=$_GET['id']?>">

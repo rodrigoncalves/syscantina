@@ -31,6 +31,7 @@
 						<th style="text-align: center">#</th>
 						<th style="text-align: center">Nome</th>
 						<th style="text-align: center">Equipe</th>
+						<th style="text-align: center">Conta</th>
 						<th style="text-align: center">Saldo</th>
 						<th style="text-align: center" colspan="5">Ações</th>
 					</tr>
@@ -57,6 +58,8 @@
 							</td>
 							<td align="center"<?=$acampante['conta']<=0 ? " style='color:red;'" : ""?>>
 								<?='R$ '.number_format($acampante['conta'], 2, ',', '.')?></td>
+							<td align="center"<?=$acampante['saldo']<=0 ? " style='color:red;'" : ""?>>
+								<?='R$ '.number_format($acampante['saldo'], 2, ',', '.')?></td>
 							<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" href="form_compra.php?id=<?=$acampante['id']?>" <?=$acampante['quitado']?"disabled":""?>><i class="fa fa-shopping-cart"></i></a></td>
 							<td align="center"><a class="btn btn-success btn-xs" title="Histórico" href="historico.php?id=<?=$acampante['id']?>"><i class="fa fa-history"></i></a></td>
 							<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="form_acampante.php?id=<?=$acampante['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
