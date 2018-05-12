@@ -1,5 +1,15 @@
 SET NAMES 'utf8' COLLATE 'utf8_general_ci';
 INSERT INTO acampantes (nome, equipe_id, conta, saldo) VALUES
+('Afonso Areosa', 12, 54, 54),
+('Almerinda Viana', 9, 30, 30),
+('Amandio Vidigal', 1, 68, 68),
+('Anacleto Lucena', 9, 66, 66),
+('Angélico Pari', 6, 39, 39),
+('Anselmo Alcoforado', 2, 39, 39),
+('Antônio Pimentel', 12, 44, 44),
+('Araribóia Castanheira', 10, 48, 48),
+('Aurora Camillo', 4, 64, 64),
+('Brenda Borja', 6, 50, 50),
 ('Bruna Sacadura', 10, 46, 46),
 ('Bruno Fróis', 8, 50, 50),
 ('Bruno Grangeia', 9, 29, 29),
@@ -16,16 +26,6 @@ INSERT INTO acampantes (nome, equipe_id, conta, saldo) VALUES
 ('Eduarda Durão', 7, 65, 65),
 ('Eduarda Villanueva', 7, 34, 34),
 ('Emiliana Osorio', 7, 50, 50),
-('Antônio Pimentel', 12, 44, 44),
-('Araribóia Castanheira', 10, 48, 48),
-('Aurora Camillo', 4, 64, 64),
-('Brenda Borja', 6, 50, 50),
-('Afonso Areosa', 12, 54, 54),
-('Almerinda Viana', 9, 30, 30),
-('Amandio Vidigal', 1, 68, 68),
-('Anacleto Lucena', 9, 66, 66),
-('Angélico Pari', 6, 39, 39),
-('Anselmo Alcoforado', 2, 39, 39),
 ('Ester Quirino', 4, 32, 32),
 ('Estêvão Felgueira', 12, 23, 23),
 ('Ferdinando Caetano', 2, 50, 50),
@@ -100,103 +100,3 @@ INSERT INTO acampantes (nome, equipe_id, conta, saldo) VALUES
 ('Veridiana Moraes', 12, 27, 27),
 ('Ximena Bonilha', 12, 65, 65),
 ('Zubaida Antúnez', 9, 62, 62);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
