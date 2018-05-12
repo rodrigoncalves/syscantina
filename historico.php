@@ -14,10 +14,10 @@
 	// Verifica se foi passado id do acampante no GET
 	$acampante_id = isset($_GET["id"]) ? $_GET["id"] : 0;
 	if ($acampante_id > 0) {
-		$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=$acampante_id");
-		$acampante=mysqli_fetch_array($sql);
-		$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
-		$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
+		$res=mysqli_query($con, "SELECT * FROM acampantes WHERE id=$acampante_id");
+		$acampante=mysqli_fetch_array($res);
+		$res=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
+		$acampante['equipe']=mysqli_fetch_array($res)['nome'];
 	}
 
 	$compras=mysqli_query($con, "SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp DESC LIMIT $inicio, $quantidade");
@@ -27,8 +27,14 @@
 		$compras=mysqli_query($con, "SELECT * FROM historico " . ($acampante_id > 0 ? "WHERE acampante_id=$acampante_id " : "") . "ORDER BY timestamp");
 	}
 
-	$sql=mysqli_query($con, "SELECT id FROM historico");
-	$total_compras=mysqli_num_rows($sql);
+	$res=mysqli_query($con, "SELECT id FROM historico");
+	$total_compras=mysqli_num_rows($res);
+
+	$res=mysqli_query($con, "SELECT SUM(valor_compra) FROM historico");
+	$total_vendas=mysqli_fetch_array($res)[0];
+
+	$res=mysqli_query($con, "SELECT SUM(valor_compra) FROM historico WHERE acampante_id=$acampante_id");
+	$total_valor_compras=mysqli_fetch_array($res)[0];
 
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 	setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -63,6 +69,7 @@
 		<?php if ($acampante_id > 0) { ?>
 			<h3><b>Acampante: </b><?=$acampante["nome"]?> - <?=$acampante["equipe"]?></h3>
 			<h4 <?=$acampante['saldo']<=0?" style='color:red';":""?>><b>Saldo: </b><?='R$ '.number_format($acampante["saldo"], 2, ',', '.')?></h4>
+			<?=$acampante['quitado']?"":"<a href=form_compra.php?id=".$acampante['id'].">Comprar</a><br>"?>
 			<a href="historico.php">Histórico de todos os acampantes</a>
 		<?php } else { ?>
 			<h3><b>Todos acampantes</b></h3>
@@ -92,10 +99,10 @@
 						<td align="center"><?=$num++?></td>
 						<td align="center"><?=strftime('%d/%m (%a) - %H:%M', strtotime($compra["timestamp"]));?></td>
 						<?php if ($acampante_id == 0) {
-							$sql=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
-							$acampante=mysqli_fetch_array($sql);
-							$sql=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
-							$acampante['equipe']=mysqli_fetch_array($sql)['nome'];
+							$res=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
+							$acampante=mysqli_fetch_array($res);
+							$res=mysqli_query($con, "SELECT nome FROM equipes WHERE id=".$acampante['equipe_id']);
+							$acampante['equipe']=mysqli_fetch_array($res)['nome'];
 						?>
 						<td align="center"><a href="historico.php?id=<?=$acampante['id']?>"><?=$acampante['nome']?></a></td>
 						<td align="center"><?=$acampante["equipe"]?></td>
@@ -111,7 +118,7 @@
 				<?php if ($acampante_id == 0) { ?>
 					<tr><th colspan="9">Total de vendas: <?='R$ '.number_format($total_vendas, 2, ',', '.')?></th></tr>
 				<?php } else { ?>
-					<tr><th colspan="9">Total de compras: <?='R$ '.number_format($total_compras, 2, ',', '.')?></th></tr>
+					<tr><th colspan="9">Total de compras: <?='R$ '.number_format($total_valor_compras, 2, ',', '.')?></th></tr>
 				<?php } ?>
 				</tfoot>
 			</table>
