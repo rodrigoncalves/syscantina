@@ -28,13 +28,13 @@
 	}
 
 	$res=mysqli_query($con, "SELECT id FROM historico");
-	$total_compras=mysqli_num_rows($res);
+	$num_compras=mysqli_num_rows($res);
 
 	$res=mysqli_query($con, "SELECT SUM(valor_compra) FROM historico");
 	$total_vendas=mysqli_fetch_array($res)[0];
 
 	$res=mysqli_query($con, "SELECT SUM(valor_compra) FROM historico WHERE acampante_id=$acampante_id");
-	$total_valor_compras=mysqli_fetch_array($res)[0];
+	$total_compras=mysqli_fetch_array($res)[0];
 
 	setlocale(LC_MONETARY, "pt_BR", "ptb");
 	setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -55,7 +55,7 @@
 				<h1>Histórico de compras</h1>
 			</div>
 			<div class="col-sm-6 text-right h2">
-			<?php if ($total_compras > $quantidade && $acampante_id == 0) { ?>
+			<?php if ($num_compras > $quantidade && $acampante_id == 0) { ?>
 				<?php if ($sem_paginamento) { ?>
 					<a class="btn btn-default" href="historico.php"><i class="fa fa-file-text-o"></i> Com paginamento</a>
 				<?php } else { ?>
@@ -119,7 +119,7 @@
 				<?php if ($acampante_id == 0) { ?>
 					<tr><th colspan="9">Total de vendas: <?='R$ '.number_format($total_vendas, 2, ',', '.')?></th></tr>
 				<?php } else { ?>
-					<tr><th colspan="9">Total de compras: <?='R$ '.number_format($total_valor_compras, 2, ',', '.')?></th></tr>
+					<tr><th colspan="9">Total de compras: <?='R$ '.number_format($total_compras, 2, ',', '.')?></th></tr>
 				<?php } ?>
 				</tfoot>
 			</table>
@@ -127,7 +127,7 @@
 	</div>
 
 	<?php
-		$total_pagina=ceil($total_compras/$quantidade);
+		$total_pagina=ceil($num_compras/$quantidade);
 
 		// Define o valor máximo a ser exibido na página tanto para direita quanto pra esquerda
 		$exibir=$quantidade;
