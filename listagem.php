@@ -63,7 +63,7 @@
 							<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="form_acampante.php?id=<?=$acampante['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
 							<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Excluir um acampante implica em excluir tambem seus registros de compra. Tem certeza que deseja continuar?');"><i class="fa fa-trash-o"></i></a></td>
 							<?php if ($acampante['quitado']) { ?>
-								<td align="center"><a class="btn btn-danger btn-xs" title="Desfazer quitar" href="quitar_acampante.php?acampante_id=<?=$acampante['id']?>&equipe_id=<?=$acampante['equipe_id']?>&source=<?=$source?>" onclick="return confirm('Deseja desfazer a marcação de quitado deste acampante?');"><i class="fa fa-check"></i></a></td>
+								<td align="center"><a class="btn btn-danger btn-xs" title="Desfazer finalizar" href="quitar_acampante.php?acampante_id=<?=$acampante['id']?>&equipe_id=<?=$acampante['equipe_id']?>&source=<?=$source?>" onclick="return confirm('Deseja desfazer a marcação de quitado deste acampante?');"><i class="fa fa-check"></i></a></td>
 							<?php } else { ?>
 								<td align="center"><a class="btn btn-success btn-xs" title="Finalizar" href="quitar_acampante.php?acampante_id=<?=$acampante['id']?>&equipe_id=<?=$acampante['equipe_id']?>&source=<?=$source?>" onclick="return confirm('Deseja marcar este acampante como quitado?');"><i class="fa fa-check"></i></a></td>
 							<?php } ?>
