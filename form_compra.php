@@ -81,7 +81,7 @@
 		</div>
 
 		<button type="submit" class="btn btn-primary">Salvar</button>
-		<a href="historico.php" class="btn btn-default">Cancelar</a>
+		<a href=<?=isset($compra_id)?"historico.php":"acampantes.php"?> class="btn btn-default">Cancelar</a>
 
 		<input type="hidden" name="acampante_id" value="<?=$acampante_id?>">
 
