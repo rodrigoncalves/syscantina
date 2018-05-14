@@ -17,7 +17,7 @@
 				<h1><?=$titulo?></h1>
 			</div>
 			<div class="col-sm-6 text-right h2">
-				<a class="btn btn-primary" href="form_acampante.php"><i class="fa fa-plus"></i> Cadastrar novo</a>
+				<a class="btn btn-primary" href=<?="form_acampante.php".(isset($_GET['id'])?"?equipe_id=".$_GET['id']:"")?>><i class="fa fa-plus"></i> Cadastrar novo</a>
 				<a class="btn btn-default" href=<?=$source.(isset($_GET["id"])?"?id=".$_GET["id"]:"")?>><i class="fa fa-refresh"></i> Atualizar</a>
 			</div>
 		</div>
