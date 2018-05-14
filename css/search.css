@@ -1,0 +1,8 @@
+.search { position: relative; }
+.search input { text-indent: 20px;}
+.search .fa-search {
+  position: relative;
+  top: 27px;
+  left: 7px;
+  font-size: 15px;
+}

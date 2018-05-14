@@ -11,6 +11,7 @@
 <script src="js/docs.min.js"></script>
 <script src="js/ie-emulation-modes-warning.js"></script>
 <script src="js/validacao_campos.js"></script>
+<script src="js/search.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 

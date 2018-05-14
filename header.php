@@ -15,7 +15,7 @@
 		<link href="css/theme.css" rel="stylesheet">
 		<link href="css/header.css" rel="stylesheet">
 		<link href="css/footer.css" rel="stylesheet">
-
+		<link href="css/search.css" rel="stylesheet">
 	</head>
 
 	<body role="document">
