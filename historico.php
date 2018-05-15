@@ -69,8 +69,11 @@
 		<?php if ($acampante_id > 0) { ?>
 			<h3><b>Acampante: </b><?=$acampante["nome"]?> - <?=$acampante["equipe"]?></h3>
 			<h4 <?=$acampante['saldo']<=0?" style='color:red';":""?>><b>Saldo: </b><?='R$ '.number_format($acampante["saldo"], 2, ',', '.')?></h4>
-			<?=$acampante['quitado']?"":"<a href=form_compra.php?id=".$acampante['id'].">Comprar</a><br>"?>
-			<?=$acampante['quitado']?"<h5 style='color:green'>Acampante Finalizado</h5>":""?>
+			<?php if ($acampante['quitado']) { ?>
+				<h5 style="color:green">Acampante Finalizado</h5>
+			<?php } else { ?>
+				<a href="form_compra.php?id=<?=$acampante['id']?>">Nova compra</a><br>
+			<?php } ?>
 			<a href="historico.php">Histórico de todos os acampantes</a>
 		<?php } else { ?>
 			<h3><b>Todos acampantes</b></h3>
