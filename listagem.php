@@ -27,7 +27,7 @@
 		<div class="col-sm-5">
 			<div class="search">
 				<span class="fa fa-search"></span>
-				<input id="search" type="search" class="form-control mx-sm-3" placeholder="Pesquisa...">
+				<input type="search" class="form-control mx-sm-3" placeholder="Pesquisa...">
 			</div>
 			<br>
 		</div>
@@ -67,7 +67,7 @@
 					<td align="center"<?=$acampante['saldo']<=0 ? " style='color:red;'" : ""?>>
 						<?='R$ '.number_format($acampante['saldo'], 2, ',', '.')?></td>
 					<td align="center"><a class="btn btn-warning btn-xs" title="Comprar" <?=$acampante['quitado']?"disabled":"href=form_compra.php?id=".$acampante['id']?>><i class="fa fa-shopping-cart"></i></a></td>
-					<td align="center"><a class="btn btn-success btn-xs" title="Histórico" href="historico.php?id=<?=$acampante['id']?>"><i class="fa fa-history"></i></a></td>
+					<td align="center"><a class="btn btn-info btn-xs" title="Histórico" href="historico.php?id=<?=$acampante['id']?>"><i class="fa fa-history"></i></a></td>
 					<td align="center"><a class="btn btn-primary btn-xs" title="Editar" href="form_acampante.php?id=<?=$acampante['id']?>"><i class="fa fa-pencil-square-o"></i></a></td>
 					<td align="center"><a class="btn btn-danger btn-xs" title="Excluir" href="excluir_acampante.php?id=<?=$acampante['id']?>" onclick="return confirm('Excluir um acampante implica em excluir tambem seus registros de compra. Tem certeza que deseja continuar?');"><i class="fa fa-trash-o"></i></a></td>
 					<?php if ($acampante['quitado']) { ?>
