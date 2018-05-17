@@ -27,9 +27,21 @@
 		<div class="col-sm-5">
 			<div class="search">
 				<span class="fa fa-search"></span>
-				<input type="search" class="form-control mx-sm-3" placeholder="Pesquisa...">
+				<input id="search" type="search" class="form-control mx-sm-3" placeholder="Pesquisa...">
 			</div>
 			<br>
+		</div>
+		<div class="col-sm-6" style="float: right">
+			<div class="col-sm-6 h2" style="float: right">
+				<select class="form-control" id="filter">
+					<option value="todos" selected="selected">Todos</option>
+					<option value="finalizados">Finalizados</option>
+					<option value="pendentes">Pendentes</option>
+				</select>
+			</div>
+			<div class="col-sm-1" style="margin: 25px; float: right">
+				<label for="filter">Filtro:</label>
+			</div>
 		</div>
 	</div>
 
@@ -52,7 +64,7 @@
 					$sql=mysqli_query($con, "SELECT * FROM equipes WHERE id=".$acampante['equipe_id']);
 					$acampante['equipe']=mysqli_fetch_array($sql);
 				?>
-				<tr <?=$acampante['quitado']?'class="success"':''?>>
+				<tr class=<?=$acampante['quitado']?"success":"pendent"?>>
 					<td align="center"><?=$num++?></td>
 					<td align="center"><?=$acampante['nome']?></td>
 					<td align="center">
