@@ -1,6 +1,6 @@
-<div class="rodape" align="center">
-	<br>
-	<span style='color:white;'>Sistema Cantinha. Versão 2.0. Copyright (C) 2018</span>
+<div class="footer" align="center">
+    <br>
+	<span>Sistema Cantinha. Versão 2.0. Copyright (C) 2018</span>
 </div>
 
 <!-- Bootstrap core JavaScript
