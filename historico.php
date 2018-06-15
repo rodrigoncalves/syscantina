@@ -100,7 +100,7 @@
 				<?php $num=1; ?>
 				<?php while ($compra = mysqli_fetch_array($compras)) { ?>
 					<tr>
-						<td align="center"><?=$num++?></td>
+						<td align="center"><?=$quantidade * ($pagina-1) + $num++?></td>
 						<td align="center"><?=strftime('%d/%m (%a) - %H:%M', strtotime($compra["timestamp"]));?></td>
 						<?php if ($acampante_id == 0) {
 							$res=mysqli_query($con, "SELECT * FROM acampantes WHERE id=".$compra['acampante_id']);
