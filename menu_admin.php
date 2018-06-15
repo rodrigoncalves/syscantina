@@ -24,6 +24,8 @@
 				<li <?=strpos($_SERVER["REQUEST_URI"], "historico.php")
 					|| strpos($_SERVER["REQUEST_URI"], "form_compra.php?acampante_id")
 					!==false?'class="active"':""?>><a href="historico.php">Histórico</a></li>
+				<li <?=strpos($_SERVER["REQUEST_URI"], "relatorio.php")
+					!==false?'class="active"':""?>><a href="relatorio.php">Relatório</a></li>
 			</ul>
 		</div>
 	</div>
