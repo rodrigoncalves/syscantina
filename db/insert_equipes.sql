@@ -12,5 +12,6 @@ INSERT INTO `equipes` (`id`, `nome`) VALUES
 (10, 'Zebulom'),
 (11, 'José'),
 (12, 'Benjamim'),
-(13, 'COLABORADOR');
-
+(13, 'Efraim'),
+(14, 'Manassés'),
+(15, 'COLABORADOR');
