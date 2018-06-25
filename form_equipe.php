@@ -34,7 +34,7 @@
 		</div>
 
 		<?php if(isset($equipe_id)) { ?>
-			<input type="hidden" name="equipe_id" value="<?=$equipe?>">
+			<input type="hidden" name="equipe_id" value="<?=$equipe_id?>">
 		<?php } ?>
 
 		<button type="submit" class="btn btn-primary">Salvar</button>
